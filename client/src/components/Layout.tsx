@@ -149,7 +149,7 @@ export default function Layout({ children }: LayoutProps) {
                 <img src="/logo.png" alt="Khelosmart" className="h-10 w-auto" />
               </Link>
               <p className="text-sm text-muted-foreground">
-                India's premier free-to-play fantasy cricket platform. Build your dream team and compete with cricket fans nationwide.
+                India's premier free-to-play fantasy cricket entertainment platform. No real money involved - play for fun and bragging rights!
               </p>
             </div>
 

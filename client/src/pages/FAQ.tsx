@@ -69,8 +69,8 @@ const faqs = [
         a: "Points are updated in real-time as the match progresses. You can track your team's performance on the live leaderboard."
       },
       {
-        q: "How is the winner determined?",
-        a: "The user with the highest total fantasy points at the end of the match wins the contest."
+        q: "How is the leaderboard ranking determined?",
+        a: "The user with the highest total fantasy points at the end of the match tops the leaderboard. This is purely for entertainment and bragging rights - no real money or prizes are involved."
       }
     ]
   },

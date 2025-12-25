@@ -11,7 +11,7 @@ export default function Terms() {
           <Card>
             <CardContent className="p-6 prose prose-sm max-w-none">
               <p className="text-muted-foreground mb-6">
-                Last updated: December 2024
+                Last updated: December 2025
               </p>
 
               <h2 className="text-xl font-bold mt-6 mb-4">1. Acceptance of Terms</h2>

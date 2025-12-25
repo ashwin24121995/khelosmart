@@ -42,3 +42,9 @@
 
 ## Bug Fixes
 - [x] Fix "Squad data not available" issue - improved error message with explanation and added warning banner on match detail page
+
+## Content Fixes (Urgent)
+- [x] Fix all dates from 2024 to 2025 (Terms, Privacy)
+- [x] Remove all misleading content about rewards, prizes, or money (Home hero, Dashboard)
+- [x] Update all pages to clearly state FREE-TO-PLAY entertainment only (FAQ, Layout footer)
+- [x] Ensure no content suggests real money involvement

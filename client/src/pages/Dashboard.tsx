@@ -86,7 +86,7 @@ export default function Dashboard() {
                   <Target className="h-6 w-6 text-green-600" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Wins</p>
+                  <p className="text-sm text-muted-foreground">Top Finishes</p>
                   <p className="text-2xl font-bold">{stats?.totalWins || 0}</p>
                 </div>
               </div>

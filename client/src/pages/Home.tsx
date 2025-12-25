@@ -29,7 +29,7 @@ export default function Home() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Play Fantasy Cricket.
               <br />
-              <span className="text-green-200">Win Big Rewards.</span>
+              <span className="text-green-200">Test Your Skills.</span>
             </h1>
             <p className="text-lg md:text-xl text-green-100 mb-8 max-w-2xl">
               Build your dream cricket team, compete in exciting contests, and prove your cricket knowledge. 100% free to play!
@@ -93,9 +93,9 @@ export default function Home() {
               <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                 <Users className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="font-semibold mb-2">Compete & Win</h3>
+              <h3 className="font-semibold mb-2">Compete & Have Fun</h3>
               <p className="text-sm text-muted-foreground">
-                Join contests, compete with other fans, and climb the leaderboard.
+                Join contests, compete with other fans, and climb the leaderboard for bragging rights.
               </p>
             </div>
 
