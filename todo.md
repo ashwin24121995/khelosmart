@@ -48,3 +48,7 @@
 - [x] Remove all misleading content about rewards, prizes, or money (Home hero, Dashboard)
 - [x] Update all pages to clearly state FREE-TO-PLAY entertainment only (FAQ, Layout footer)
 - [x] Ensure no content suggests real money involvement
+
+## Styling Updates
+- [x] Change header background to black with white text
+- [x] Change footer background to black with white text

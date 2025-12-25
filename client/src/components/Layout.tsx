@@ -38,7 +38,7 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       {/* Header */}
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <header className="sticky top-0 z-50 w-full border-b border-gray-800 bg-black text-white">
         <div className="container flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
@@ -51,7 +51,7 @@ export default function Layout({ children }: LayoutProps) {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+                className="text-sm font-medium text-gray-300 hover:text-white transition-colors"
               >
                 {link.label}
               </Link>
@@ -61,16 +61,16 @@ export default function Layout({ children }: LayoutProps) {
           {/* Auth Section */}
           <div className="flex items-center gap-4">
             {loading ? (
-              <div className="h-8 w-20 bg-muted animate-pulse rounded" />
+              <div className="h-8 w-20 bg-gray-700 animate-pulse rounded" />
             ) : isAuthenticated ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" className="gap-2">
-                    <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center">
+                  <Button variant="ghost" className="gap-2 text-white hover:bg-gray-800 hover:text-white">
+                    <div className="h-8 w-8 rounded-full bg-primary/20 flex items-center justify-center">
                       <User className="h-4 w-4 text-primary" />
                     </div>
-                    <span className="hidden sm:inline">{user?.name || "User"}</span>
-                    <ChevronDown className="h-4 w-4" />
+                    <span className="hidden sm:inline text-white">{user?.name || "User"}</span>
+                    <ChevronDown className="h-4 w-4 text-white" />
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-48">
@@ -106,7 +106,7 @@ export default function Layout({ children }: LayoutProps) {
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden"
+              className="md:hidden text-white hover:bg-gray-800"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -116,13 +116,13 @@ export default function Layout({ children }: LayoutProps) {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-t bg-background">
+          <div className="md:hidden border-t border-gray-800 bg-black">
             <nav className="container py-4 flex flex-col gap-2">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-muted-foreground hover:text-primary hover:bg-muted rounded-md transition-colors"
+                  className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800 rounded-md transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.icon && <link.icon className="h-4 w-4" />}
@@ -140,7 +140,7 @@ export default function Layout({ children }: LayoutProps) {
       </main>
 
       {/* Footer */}
-      <footer className="border-t bg-muted/30">
+      <footer className="border-t border-gray-800 bg-black text-white">
         <div className="container py-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {/* Brand */}
@@ -148,49 +148,49 @@ export default function Layout({ children }: LayoutProps) {
               <Link href="/" className="flex items-center gap-2">
                 <img src="/logo.png" alt="Khelosmart" className="h-10 w-auto" />
               </Link>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-gray-400">
                 India's premier free-to-play fantasy cricket entertainment platform. No real money involved - play for fun and bragging rights!
               </p>
             </div>
 
             {/* Quick Links */}
             <div>
-              <h4 className="font-semibold mb-4">Quick Links</h4>
+              <h4 className="font-semibold mb-4 text-white">Quick Links</h4>
               <ul className="space-y-2 text-sm">
-                <li><Link href="/matches" className="text-muted-foreground hover:text-primary">Matches</Link></li>
-                <li><Link href="/contests" className="text-muted-foreground hover:text-primary">Contests</Link></li>
-                <li><Link href="/how-to-play" className="text-muted-foreground hover:text-primary">How to Play</Link></li>
-                <li><Link href="/faq" className="text-muted-foreground hover:text-primary">FAQ</Link></li>
+                <li><Link href="/matches" className="text-gray-400 hover:text-primary">Matches</Link></li>
+                <li><Link href="/contests" className="text-gray-400 hover:text-primary">Contests</Link></li>
+                <li><Link href="/how-to-play" className="text-gray-400 hover:text-primary">How to Play</Link></li>
+                <li><Link href="/faq" className="text-gray-400 hover:text-primary">FAQ</Link></li>
               </ul>
             </div>
 
             {/* Legal */}
             <div>
-              <h4 className="font-semibold mb-4">Legal</h4>
+              <h4 className="font-semibold mb-4 text-white">Legal</h4>
               <ul className="space-y-2 text-sm">
-                <li><Link href="/terms" className="text-muted-foreground hover:text-primary">Terms & Conditions</Link></li>
-                <li><Link href="/privacy" className="text-muted-foreground hover:text-primary">Privacy Policy</Link></li>
-                <li><Link href="/responsible-gaming" className="text-muted-foreground hover:text-primary">Responsible Gaming</Link></li>
-                <li><Link href="/fair-play" className="text-muted-foreground hover:text-primary">Fair Play</Link></li>
+                <li><Link href="/terms" className="text-gray-400 hover:text-primary">Terms & Conditions</Link></li>
+                <li><Link href="/privacy" className="text-gray-400 hover:text-primary">Privacy Policy</Link></li>
+                <li><Link href="/responsible-gaming" className="text-gray-400 hover:text-primary">Responsible Gaming</Link></li>
+                <li><Link href="/fair-play" className="text-gray-400 hover:text-primary">Fair Play</Link></li>
               </ul>
             </div>
 
             {/* Company */}
             <div>
-              <h4 className="font-semibold mb-4">Company</h4>
+              <h4 className="font-semibold mb-4 text-white">Company</h4>
               <ul className="space-y-2 text-sm">
-                <li><Link href="/about" className="text-muted-foreground hover:text-primary">About Us</Link></li>
-                <li><Link href="/contact" className="text-muted-foreground hover:text-primary">Contact Us</Link></li>
+                <li><Link href="/about" className="text-gray-400 hover:text-primary">About Us</Link></li>
+                <li><Link href="/contact" className="text-gray-400 hover:text-primary">Contact Us</Link></li>
               </ul>
-              <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
-                <p className="text-xs text-yellow-800">
+              <div className="mt-4 p-3 bg-yellow-900/30 border border-yellow-700 rounded-lg">
+                <p className="text-xs text-yellow-400">
                   <strong>18+ Only.</strong> Fantasy sports not available in Telangana, Andhra Pradesh, Assam, and Odisha.
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
+          <div className="mt-8 pt-8 border-t border-gray-800 text-center text-sm text-gray-400">
             <p>© {new Date().getFullYear()} Khelosmart. Operated by THIRUMOOLAR SAPTHAYOGA GRADING. All rights reserved.</p>
           </div>
         </div>
