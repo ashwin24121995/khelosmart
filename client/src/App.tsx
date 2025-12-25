@@ -27,6 +27,9 @@ const ResponsibleGaming = lazy(() => import("./pages/ResponsibleGaming"));
 const FairPlay = lazy(() => import("./pages/FairPlay"));
 const FAQ = lazy(() => import("./pages/FAQ"));
 const AgeVerification = lazy(() => import("./pages/AgeVerification"));
+const Login = lazy(() => import("./pages/Login"));
+const Register = lazy(() => import("./pages/Register"));
+const ForgotPassword = lazy(() => import("./pages/ForgotPassword"));
 
 function PageLoader() {
   return (
@@ -48,6 +51,11 @@ function Router() {
         <Route path="/results/:id" component={Results} />
         <Route path="/contests" component={Contests} />
         <Route path="/contest/:id" component={ContestDetail} />
+        
+        {/* Auth pages */}
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
+        <Route path="/forgot-password" component={ForgotPassword} />
         
         {/* Protected pages */}
         <Route path="/create-team/:matchId/:contestId" component={CreateTeam} />

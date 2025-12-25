@@ -38,14 +38,18 @@ export function useAuth(options?: UseAuthOptions) {
     } finally {
       utils.auth.me.setData(undefined, null);
       await utils.auth.me.invalidate();
+      // Redirect to home after logout
+      window.location.href = "/";
     }
   }, [logoutMutation, utils]);
 
   const state = useMemo(() => {
-    localStorage.setItem(
-      "manus-runtime-user-info",
-      JSON.stringify(meQuery.data)
-    );
+    // Store user info in localStorage for persistence
+    if (meQuery.data) {
+      localStorage.setItem("user-info", JSON.stringify(meQuery.data));
+    } else {
+      localStorage.removeItem("user-info");
+    }
     return {
       user: meQuery.data ?? null,
       loading: meQuery.isLoading || logoutMutation.isPending,
@@ -66,8 +70,10 @@ export function useAuth(options?: UseAuthOptions) {
     if (state.user) return;
     if (typeof window === "undefined") return;
     if (window.location.pathname === redirectPath) return;
+    if (window.location.pathname === "/register") return;
+    if (window.location.pathname === "/login") return;
 
-    window.location.href = redirectPath
+    window.location.href = redirectPath;
   }, [
     redirectOnUnauthenticated,
     redirectPath,

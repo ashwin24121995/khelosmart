@@ -1,6 +1,5 @@
 import { Link } from "wouter";
 import { useAuth } from "@/_core/hooks/useAuth";
-import { getLoginUrl } from "@/const";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -97,9 +96,14 @@ export default function Layout({ children }: LayoutProps) {
                 </DropdownMenuContent>
               </DropdownMenu>
             ) : (
-              <Button asChild>
-                <a href={getLoginUrl()}>Login</a>
-              </Button>
+              <div className="flex items-center gap-2">
+                <Button variant="ghost" asChild className="text-white hover:bg-gray-800 hover:text-white">
+                  <Link href="/login">Login</Link>
+                </Button>
+                <Button asChild>
+                  <Link href="/register">Sign Up</Link>
+                </Button>
+              </div>
             )}
 
             {/* Mobile Menu Button */}

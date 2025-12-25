@@ -1,33 +1,44 @@
 import { int, mysqlEnum, mysqlTable, text, timestamp, varchar, boolean, json, decimal } from "drizzle-orm/mysql-core";
 
 /**
- * Core user table backing auth flow.
- * Extended with age verification and geo-restriction fields.
+ * Core user table with email/password authentication.
+ * No external OAuth dependencies.
  */
 export const users = mysqlTable("users", {
   id: int("id").autoincrement().primaryKey(),
-  openId: varchar("openId", { length: 64 }).notNull().unique(),
+  
+  // Authentication - email/password based
+  email: varchar("email", { length: 320 }).notNull().unique(),
+  password: varchar("password", { length: 255 }).notNull(), // bcrypt hashed
+  
+  // Profile
   name: text("name"),
-  email: varchar("email", { length: 320 }),
-  loginMethod: varchar("loginMethod", { length: 64 }),
+  phone: varchar("phone", { length: 20 }),
+  avatarUrl: text("avatarUrl"),
+  
+  // Role
   role: mysqlEnum("role", ["user", "admin"]).default("user").notNull(),
   
-  // Age verification
+  // Age verification (18+ required)
   dateOfBirth: timestamp("dateOfBirth"),
   isAgeVerified: boolean("isAgeVerified").default(false).notNull(),
   
-  // Geo-restriction
+  // Geo-restriction (blocked states: Telangana, Andhra Pradesh, Assam, Odisha)
   state: varchar("state", { length: 100 }),
   isGeoRestricted: boolean("isGeoRestricted").default(false).notNull(),
-  
-  // Profile
-  avatarUrl: text("avatarUrl"),
-  phone: varchar("phone", { length: 20 }),
   
   // Stats
   totalContests: int("totalContests").default(0).notNull(),
   totalWins: int("totalWins").default(0).notNull(),
   totalPoints: int("totalPoints").default(0).notNull(),
+  
+  // Email verification
+  isEmailVerified: boolean("isEmailVerified").default(false).notNull(),
+  emailVerificationToken: varchar("emailVerificationToken", { length: 255 }),
+  
+  // Password reset
+  passwordResetToken: varchar("passwordResetToken", { length: 255 }),
+  passwordResetExpires: timestamp("passwordResetExpires"),
   
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
