@@ -38,6 +38,11 @@ export function createApp() {
   // OAuth callback under /api/oauth/callback
   registerOAuthRoutes(app);
   
+  // Health check endpoint
+  app.get("/api/health", (req, res) => {
+    res.json({ status: "ok", timestamp: new Date().toISOString() });
+  });
+  
   // tRPC API
   app.use(
     "/api/trpc",
@@ -55,8 +60,7 @@ export function createApp() {
   return app;
 }
 
-// Export for Vercel serverless
-export default createApp();
+
 
 async function startServer() {
   const app = express();
@@ -93,7 +97,5 @@ async function startServer() {
   });
 }
 
-// Only start server if not in serverless environment
-if (process.env.VERCEL !== "1") {
-  startServer().catch(console.error);
-}
+// Start the server
+startServer().catch(console.error);

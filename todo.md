@@ -68,3 +68,10 @@
 - [x] Create new GitHub repository for Khelosmart
 - [x] Push all project files to GitHub
 - [x] Repository ready for Vercel connection
+
+## Railway Deployment
+- [ ] Remove Vercel-specific configuration
+- [ ] Add Railway configuration (Procfile, railway.json)
+- [ ] Update build scripts for Railway
+- [ ] Push changes to GitHub
+- [ ] Deploy to Railway
