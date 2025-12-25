@@ -1,0 +1,13 @@
+# Khelosmart Fantasy Cricket
+# www.khelosmart.com
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.khelosmart.com/sitemap.xml
+
+# Disallow admin/private areas
+Disallow: /api/
+Disallow: /dashboard
+Disallow: /profile
