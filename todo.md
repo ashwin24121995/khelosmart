@@ -85,3 +85,9 @@
 - [x] Auto-remove banner after launch date passes
 - [x] Responsive design with good visuals
 - [x] Integrate banner before hero section on homepage
+
+## Countdown Timer Animations
+- [x] Add flip/slide animations for number changes
+- [x] Add glow effects and pulsing animations
+- [x] Add smooth transitions between seconds
+- [ ] Push animated countdown timer changes to GitHub
