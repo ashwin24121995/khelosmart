@@ -63,3 +63,8 @@
 ## Logo Size Updates
 - [x] Increase header logo size by 30% (h-10 to h-[52px])
 - [x] Increase footer logo size by 50% (h-10 to h-[60px])
+
+## GitHub & Vercel Deployment
+- [ ] Create new GitHub repository for Khelosmart
+- [ ] Push all project files to GitHub
+- [ ] Prepare for Vercel connection
