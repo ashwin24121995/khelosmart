@@ -59,3 +59,7 @@
 - [x] Remove Manus CDN connections
 - [x] Remove all Manus API dependencies
 - [x] Update user authentication flow to be self-contained
+
+## Logo Size Updates
+- [x] Increase header logo size by 30% (h-10 to h-[52px])
+- [x] Increase footer logo size by 50% (h-10 to h-[60px])

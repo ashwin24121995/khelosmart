@@ -41,7 +41,7 @@ export default function Layout({ children }: LayoutProps) {
         <div className="container flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <img src="/logo.png" alt="Khelosmart" className="h-10 w-auto" />
+            <img src="/logo.png" alt="Khelosmart" className="h-[52px] w-auto" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -150,7 +150,7 @@ export default function Layout({ children }: LayoutProps) {
             {/* Brand */}
             <div className="space-y-4">
               <Link href="/" className="flex items-center gap-2">
-                <img src="/logo.png" alt="Khelosmart" className="h-10 w-auto" />
+                <img src="/logo.png" alt="Khelosmart" className="h-[60px] w-auto" />
               </Link>
               <p className="text-sm text-gray-400">
                 India's premier free-to-play fantasy cricket entertainment platform. No real money involved - play for fun and bragging rights!
