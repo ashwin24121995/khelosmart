@@ -1,5 +1,6 @@
 import Layout from "@/components/Layout";
 import MatchCard from "@/components/MatchCard";
+import { LaunchCountdownBanner } from "@/components/LaunchCountdownBanner";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { trpc } from "@/lib/trpc";
@@ -21,6 +22,9 @@ export default function Home() {
 
   return (
     <Layout>
+      {/* Launch Countdown Banner - Auto-removes after Jan 2, 2026 */}
+      <LaunchCountdownBanner />
+
       {/* Hero Section */}
       <section className="relative overflow-hidden gradient-green text-white">
         <div className="absolute inset-0 bg-[url('/cricket-pattern.svg')] opacity-10" />

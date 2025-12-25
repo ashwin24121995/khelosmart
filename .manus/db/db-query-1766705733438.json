@@ -1,0 +1,19 @@
+{
+  "query": "SELECT id, email, name, isAgeVerified, isGeoRestricted, state, createdAt FROM users LIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user Hbsm33TssSr3JiD.a42b1b986d91 --database gezoq8JjZ6N3u3zh8rrQdf --execute SELECT id, email, name, isAgeVerified, isGeoRestricted, state, createdAt FROM users LIMIT 10;",
+  "rows": [
+    {
+      "id": "1",
+      "email": "ashwanidwivedimumbai@gmail.com",
+      "name": "ashwani dwivedi",
+      "isAgeVerified": "1",
+      "isGeoRestricted": "0",
+      "state": "Dadra and Nagar Haveli",
+      "createdAt": "2025-12-25 21:45:02"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\temail\tname\tisAgeVerified\tisGeoRestricted\tstate\tcreatedAt\n1\tashwanidwivedimumbai@gmail.com\tashwani dwivedi\t1\t0\tDadra and Nagar Haveli\t2025-12-25 21:45:02\n",
+  "stderr": "",
+  "execution_time_ms": 1556
+}

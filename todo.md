@@ -75,3 +75,13 @@
 - [x] Update build scripts for Railway
 - [x] Push changes to GitHub
 - [ ] Deploy to Railway
+
+## Bug Fixes (Railway Deployment)
+- [ ] Fix "Failed to create user" error - check database connection and user registration
+
+## Launch Banner
+- [x] Create countdown banner component with IST timezone support
+- [x] Add auto-countdown timer until January 2, 2026
+- [x] Auto-remove banner after launch date passes
+- [x] Responsive design with good visuals
+- [x] Integrate banner before hero section on homepage
