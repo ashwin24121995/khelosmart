@@ -259,12 +259,48 @@ export default function CreateTeam() {
   if (squadError || !squadData || squadData.length === 0) {
     return (
       <Layout>
-        <div className="container py-8 text-center">
-          <AlertCircle className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
-          <p className="text-muted-foreground mb-4">Squad data not available for this match yet.</p>
-          <Button asChild>
-            <Link href={`/match/${matchId}`}>Back to Match</Link>
+        <div className="container py-8">
+          <Button variant="ghost" asChild className="mb-6">
+            <Link href={`/match/${matchId}`}>
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Back to Match
+            </Link>
           </Button>
+          
+          <Card className="max-w-lg mx-auto">
+            <CardContent className="py-12 text-center">
+              <AlertCircle className="h-16 w-16 mx-auto text-amber-500 mb-6" />
+              <h2 className="text-2xl font-bold mb-3">Squad Not Available Yet</h2>
+              <p className="text-muted-foreground mb-6">
+                Fantasy squad data for this match is not available yet. This typically happens when:
+              </p>
+              <ul className="text-sm text-muted-foreground text-left max-w-sm mx-auto space-y-2 mb-6">
+                <li className="flex items-start gap-2">
+                  <span className="text-primary">•</span>
+                  <span>The match is too far in the future</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary">•</span>
+                  <span>Teams haven't announced their playing XI</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary">•</span>
+                  <span>The series doesn't have fantasy data coverage</span>
+                </li>
+              </ul>
+              <p className="text-sm text-muted-foreground mb-6">
+                Please check back closer to the match start time, or try another match.
+              </p>
+              <div className="flex gap-3 justify-center">
+                <Button asChild variant="outline">
+                  <Link href="/matches">Browse Matches</Link>
+                </Button>
+                <Button asChild>
+                  <Link href={`/match/${matchId}`}>View Match Details</Link>
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </Layout>
     );

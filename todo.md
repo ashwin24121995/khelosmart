@@ -39,3 +39,6 @@
 - [x] Final testing and validation
 - [x] robots.txt and SEO meta tags
 - [ ] Create deployment checkpoint
+
+## Bug Fixes
+- [x] Fix "Squad data not available" issue - improved error message with explanation and added warning banner on match detail page

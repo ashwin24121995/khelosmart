@@ -13,7 +13,8 @@ import {
   Trophy,
   Users,
   ArrowLeft,
-  Clock
+  Clock,
+  AlertCircle
 } from "lucide-react";
 import { format } from "date-fns";
 import { toast } from "sonner";
@@ -27,6 +28,14 @@ export default function MatchDetail() {
     { matchId: id || "" },
     { enabled: !!id }
   );
+
+  // Check if squad data is available for this match
+  const { data: squadData, isLoading: squadLoading } = trpc.matches.getSquad.useQuery(
+    { matchId: id || "" },
+    { enabled: !!id }
+  );
+
+  const hasSquadData = squadData && squadData.length > 0 && squadData.some(team => team.players.length > 0);
 
   const { data: contests, isLoading: contestsLoading } = trpc.contests.list.useQuery(
     { status: "upcoming" }
@@ -186,6 +195,23 @@ export default function MatchDetail() {
             )}
           </CardContent>
         </Card>
+
+        {/* Squad Availability Notice */}
+        {!squadLoading && !hasSquadData && isUpcoming && (
+          <Card className="mb-6 border-amber-500/50 bg-amber-50 dark:bg-amber-950/20">
+            <CardContent className="py-4">
+              <div className="flex items-start gap-3">
+                <AlertCircle className="h-5 w-5 text-amber-500 mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="font-medium text-amber-700 dark:text-amber-400">Squad data not available yet</p>
+                  <p className="text-sm text-amber-600/80 dark:text-amber-400/80">
+                    Fantasy team creation will be available once the playing squads are announced. Please check back closer to match time.
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        )}
 
         {/* Contests Section */}
         <div className="mb-8">
