@@ -97,4 +97,4 @@
 - [x] Generate fantasy team creation illustration
 - [x] Generate cricket action shot for features section
 - [x] Add images to homepage sections
-- [ ] Push changes to GitHub
+- [x] Push changes to GitHub
