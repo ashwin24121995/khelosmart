@@ -144,4 +144,4 @@
 - [x] Add OfflineIndicator to main layout
 - [x] Wire up achievement badges to user dashboard
 - [x] Create user profile page with achievements, performance history, and team templates
-- [ ] Push changes to GitHub
+- [x] Push changes to GitHub
