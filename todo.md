@@ -109,4 +109,4 @@
 - [x] Update team creation UI to show lock status before toss
 - [x] Allow team edits until first ball (match goes live)
 - [x] Display toss information on match details page
-- [ ] Push changes to GitHub
+- [x] Push changes to GitHub
