@@ -91,3 +91,10 @@
 - [x] Add glow effects and pulsing animations
 - [x] Add smooth transitions between seconds
 - [x] Push animated countdown timer changes to GitHub
+
+## Homepage Images
+- [x] Generate hero section cricket stadium/player image
+- [x] Generate fantasy team creation illustration
+- [x] Generate cricket action shot for features section
+- [x] Add images to homepage sections
+- [ ] Push changes to GitHub
