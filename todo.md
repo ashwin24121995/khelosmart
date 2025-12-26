@@ -117,3 +117,24 @@
 - [x] Implement push notifications for toss completion
 - [x] Auto-refresh squad list after toss
 - [x] Push changes to GitHub
+
+## User Experience Improvements
+- [x] Player statistics popup - Show detailed player stats on hover during team selection
+- [x] Team templates - Allow users to save and reuse team templates
+- [x] Dark/Light mode toggle - Add theme switcher in header
+- [x] Onboarding tour - Guide new users with interactive tooltips
+
+## Engagement Features
+- [x] Live match commentary - Ball-by-ball commentary feed on scorecard page
+- [x] Achievement badges - Award badges for milestones (first win, 10 contests, top 10 finish)
+
+## Analytics & Insights
+- [x] Player comparison tool - Side-by-side comparison of two players' stats
+- [x] Performance history - Show user's past contest performance with graphs
+- [x] Most picked players - Display popular players in a contest
+- [x] Captain/Vice-Captain suggestions - AI-powered recommendations based on form
+
+## Technical Enhancements
+- [x] Offline support - Cache match data for viewing without internet
+- [x] Multi-language support - Add Hindi and regional language options
+- [ ] Push all changes to GitHub

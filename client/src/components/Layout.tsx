@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -58,7 +59,9 @@ export default function Layout({ children }: LayoutProps) {
           </nav>
 
           {/* Auth Section */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
+            {/* Theme Toggle */}
+            <ThemeToggle />
             {loading ? (
               <div className="h-8 w-20 bg-gray-700 animate-pulse rounded" />
             ) : isAuthenticated ? (

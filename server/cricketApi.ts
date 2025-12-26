@@ -339,3 +339,34 @@ export function calculateTotalPlayerPoints(
 
   return totalPoints;
 }
+
+
+// Ball-by-ball commentary types
+export interface BallCommentary {
+  over: number;
+  ball: number;
+  score: string;
+  commentary: string;
+  batsman?: string;
+  bowler?: string;
+  runs?: number;
+  isWicket?: boolean;
+  isBoundary?: boolean;
+  isSix?: boolean;
+}
+
+export interface MatchCommentary {
+  id: string;
+  name: string;
+  status: string;
+  commentary: BallCommentary[];
+}
+
+/**
+ * Get ball-by-ball commentary for a match
+ * Note: This uses the match_bbb endpoint from cricapi
+ */
+export async function getMatchCommentary(matchId: string): Promise<MatchCommentary | null> {
+  const data = await fetchCricketApi<MatchCommentary>("match_bbb", { id: matchId });
+  return data;
+}

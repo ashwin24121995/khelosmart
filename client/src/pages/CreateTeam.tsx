@@ -1,5 +1,7 @@
 import Layout from "@/components/Layout";
 import { MatchCountdown } from "@/components/MatchCountdown";
+import { PlayerStatsPopup } from "@/components/PlayerStatsPopup";
+import { TeamTemplatesDialog } from "@/components/TeamTemplatesDialog";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -456,15 +458,46 @@ export default function CreateTeam() {
                 <span>AR: {selectionCounts.byRole.allrounder || 0}</span>
                 <span>BOWL: {selectionCounts.byRole.bowler || 0}</span>
               </div>
-              {step === "select" && (
-                <Button 
-                  onClick={() => setStep("captain")}
-                  disabled={!isTeamValid()}
-                >
-                  Next
-                  <ArrowRight className="h-4 w-4 ml-2" />
-                </Button>
-              )}
+              <div className="flex items-center gap-2">
+                {step === "select" && (
+                  <TeamTemplatesDialog
+                    currentPlayers={selectedPlayers}
+                    captainId={captain?.id}
+                    viceCaptainId={viceCaptain?.id}
+                    matchType={matchInfo?.matchType}
+                    onLoadTemplate={(players, capId, vcId) => {
+                      // Find matching players from squad
+                      const matchedPlayers = players.filter(p => 
+                        allPlayers.some(ap => ap.id === p.id)
+                      ).map(p => {
+                        const squadPlayer = allPlayers.find(ap => ap.id === p.id);
+                        return squadPlayer || p;
+                      }) as SelectedPlayer[];
+                      
+                      setSelectedPlayers(matchedPlayers);
+                      
+                      // Set captain/vc if they exist in the loaded template
+                      if (capId) {
+                        const cap = matchedPlayers.find(p => p.id === capId);
+                        if (cap) cap.isCaptain = true;
+                      }
+                      if (vcId) {
+                        const vc = matchedPlayers.find(p => p.id === vcId);
+                        if (vc) vc.isViceCaptain = true;
+                      }
+                    }}
+                  />
+                )}
+                {step === "select" && (
+                  <Button 
+                    onClick={() => setStep("captain")}
+                    disabled={!isTeamValid()}
+                  >
+                    Next
+                    <ArrowRight className="h-4 w-4 ml-2" />
+                  </Button>
+                )}
+              </div>
               {step === "captain" && (
                 <div className="flex gap-2">
                   <Button variant="outline" onClick={() => setStep("select")}>
@@ -527,34 +560,40 @@ export default function CreateTeam() {
                     const canSelect = canSelectPlayer(player);
                     
                     return (
-                      <Card 
+                      <PlayerStatsPopup
                         key={player.id}
-                        className={`cursor-pointer transition-all ${
-                          selected 
-                            ? "border-primary ring-2 ring-primary bg-primary/5" 
-                            : canSelect 
-                              ? "hover:border-primary/50" 
-                              : "opacity-50"
-                        }`}
-                        onClick={() => canSelect && togglePlayer(player)}
+                        playerName={player.name}
+                        playerRole={player.fantasyRole}
+                        team={player.team}
                       >
-                        <CardContent className="p-4">
-                          <div className="flex items-center gap-3">
-                            <div className="h-12 w-12 rounded-full bg-muted flex items-center justify-center">
-                              <User className="h-6 w-6 text-muted-foreground" />
-                            </div>
-                            <div className="flex-1 min-w-0">
-                              <p className="font-medium truncate">{player.name}</p>
-                              <p className="text-sm text-muted-foreground">{player.team}</p>
-                            </div>
-                            {selected && (
-                              <div className="h-6 w-6 rounded-full bg-primary flex items-center justify-center">
-                                <Check className="h-4 w-4 text-primary-foreground" />
+                        <Card 
+                          className={`cursor-pointer transition-all ${
+                            selected 
+                              ? "border-primary ring-2 ring-primary bg-primary/5" 
+                              : canSelect 
+                                ? "hover:border-primary/50" 
+                                : "opacity-50"
+                          }`}
+                          onClick={() => canSelect && togglePlayer(player)}
+                        >
+                          <CardContent className="p-4">
+                            <div className="flex items-center gap-3">
+                              <div className="h-12 w-12 rounded-full bg-muted flex items-center justify-center">
+                                <User className="h-6 w-6 text-muted-foreground" />
                               </div>
-                            )}
-                          </div>
-                        </CardContent>
-                      </Card>
+                              <div className="flex-1 min-w-0">
+                                <p className="font-medium truncate">{player.name}</p>
+                                <p className="text-sm text-muted-foreground">{player.team}</p>
+                              </div>
+                              {selected && (
+                                <div className="h-6 w-6 rounded-full bg-primary flex items-center justify-center">
+                                  <Check className="h-4 w-4 text-primary-foreground" />
+                                </div>
+                              )}
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </PlayerStatsPopup>
                     );
                   })}
                 </div>

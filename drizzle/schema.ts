@@ -208,3 +208,96 @@ export const playerPoints = mysqlTable("playerPoints", {
 
 export type PlayerPoints = typeof playerPoints.$inferSelect;
 export type InsertPlayerPoints = typeof playerPoints.$inferInsert;
+
+
+/**
+ * Team templates - saved team configurations for reuse
+ */
+export const teamTemplates = mysqlTable("teamTemplates", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  
+  name: varchar("name", { length: 100 }).notNull(),
+  description: text("description"),
+  
+  // Match type this template is for (t20, odi, test)
+  matchType: varchar("matchType", { length: 20 }),
+  
+  // Template configuration
+  captainId: varchar("captainId", { length: 64 }),
+  viceCaptainId: varchar("viceCaptainId", { length: 64 }),
+  
+  // Players (JSON array of player configurations)
+  // Format: [{ id, name, role, team }]
+  players: json("players").notNull(),
+  
+  // Stats
+  timesUsed: int("timesUsed").default(0).notNull(),
+  avgPoints: decimal("avgPoints", { precision: 10, scale: 2 }).default("0"),
+  
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type TeamTemplate = typeof teamTemplates.$inferSelect;
+export type InsertTeamTemplate = typeof teamTemplates.$inferInsert;
+
+/**
+ * User achievements/badges
+ */
+export const achievements = mysqlTable("achievements", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  
+  // Achievement type
+  type: varchar("type", { length: 50 }).notNull(),
+  // first_win, contests_10, contests_50, contests_100, top_10_finish, top_3_finish, 
+  // perfect_captain, streak_3, streak_5, century_points, double_century
+  
+  name: varchar("name", { length: 100 }).notNull(),
+  description: text("description"),
+  icon: varchar("icon", { length: 50 }), // emoji or icon name
+  
+  // Progress tracking
+  progress: int("progress").default(0).notNull(),
+  target: int("target").default(1).notNull(),
+  isCompleted: boolean("isCompleted").default(false).notNull(),
+  
+  // Rewards
+  pointsAwarded: int("pointsAwarded").default(0),
+  
+  unlockedAt: timestamp("unlockedAt"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type Achievement = typeof achievements.$inferSelect;
+export type InsertAchievement = typeof achievements.$inferInsert;
+
+/**
+ * User preferences - stores user settings including language
+ */
+export const userPreferences = mysqlTable("userPreferences", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull().unique(),
+  
+  // Theme
+  theme: mysqlEnum("theme", ["light", "dark", "system"]).default("system").notNull(),
+  
+  // Language
+  language: varchar("language", { length: 10 }).default("en").notNull(), // en, hi, ta, te, etc.
+  
+  // Notifications
+  pushNotifications: boolean("pushNotifications").default(true).notNull(),
+  emailNotifications: boolean("emailNotifications").default(true).notNull(),
+  tossAlerts: boolean("tossAlerts").default(true).notNull(),
+  matchReminders: boolean("matchReminders").default(true).notNull(),
+  
+  // Onboarding
+  hasCompletedOnboarding: boolean("hasCompletedOnboarding").default(false).notNull(),
+  
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type UserPreferences = typeof userPreferences.$inferSelect;
+export type InsertUserPreferences = typeof userPreferences.$inferInsert;

@@ -9,6 +9,7 @@ import {
   getFantasySquad, 
   getMatchScorecard, 
   getFantasyPoints,
+  getMatchCommentary,
   categorizeMatches,
   mapPlayerRole,
   calculateTotalPlayerPoints,
@@ -17,7 +18,10 @@ import {
   contests, 
   fantasyTeams, 
   contestEntries, 
-  users 
+  users,
+  teamTemplates,
+  achievements,
+  userPreferences
 } from "../drizzle/schema";
 import { eq, and, desc, sql } from "drizzle-orm";
 import { getDb } from "./db";
@@ -236,6 +240,13 @@ export const appRouter = router({
       .input(z.object({ matchId: z.string() }))
       .query(async ({ input }) => {
         return getFantasyPoints(input.matchId);
+      }),
+
+    // Get ball-by-ball commentary
+    getCommentary: publicProcedure
+      .input(z.object({ matchId: z.string() }))
+      .query(async ({ input }) => {
+        return getMatchCommentary(input.matchId);
       }),
   }),
 
@@ -607,6 +618,263 @@ export const appRouter = router({
           .where(eq(fantasyTeams.id, input.teamId));
 
         return { success: true, totalPoints };
+      }),
+  }),
+
+  // Team templates
+  templates: router({
+    // List user's templates
+    list: protectedProcedure.query(async ({ ctx }) => {
+      const db = await getDb();
+      if (!db) return [];
+
+      return db.select()
+        .from(teamTemplates)
+        .where(eq(teamTemplates.userId, ctx.user.id))
+        .orderBy(desc(teamTemplates.updatedAt));
+    }),
+
+    // Create a new template
+    create: protectedProcedure
+      .input(z.object({
+        name: z.string().min(1).max(100),
+        description: z.string().optional(),
+        matchType: z.string().optional(),
+        captainId: z.string().optional(),
+        viceCaptainId: z.string().optional(),
+        players: z.array(z.object({
+          id: z.string(),
+          name: z.string(),
+          role: z.string(),
+          team: z.string(),
+        })),
+      }))
+      .mutation(async ({ ctx, input }) => {
+        const db = await getDb();
+        if (!db) throw new Error("Database not available");
+
+        const [result] = await db.insert(teamTemplates).values({
+          userId: ctx.user.id,
+          name: input.name,
+          description: input.description,
+          matchType: input.matchType,
+          captainId: input.captainId,
+          viceCaptainId: input.viceCaptainId,
+          players: input.players,
+        });
+
+        return { success: true, templateId: result.insertId };
+      }),
+
+    // Update template
+    update: protectedProcedure
+      .input(z.object({
+        templateId: z.number(),
+        name: z.string().min(1).max(100).optional(),
+        description: z.string().optional(),
+        captainId: z.string().optional(),
+        viceCaptainId: z.string().optional(),
+        players: z.array(z.object({
+          id: z.string(),
+          name: z.string(),
+          role: z.string(),
+          team: z.string(),
+        })).optional(),
+      }))
+      .mutation(async ({ ctx, input }) => {
+        const db = await getDb();
+        if (!db) throw new Error("Database not available");
+
+        const updates: Record<string, unknown> = {};
+        if (input.name) updates.name = input.name;
+        if (input.description !== undefined) updates.description = input.description;
+        if (input.captainId) updates.captainId = input.captainId;
+        if (input.viceCaptainId) updates.viceCaptainId = input.viceCaptainId;
+        if (input.players) updates.players = input.players;
+
+        await db.update(teamTemplates)
+          .set(updates)
+          .where(and(
+            eq(teamTemplates.id, input.templateId),
+            eq(teamTemplates.userId, ctx.user.id)
+          ));
+
+        return { success: true };
+      }),
+
+    // Delete template
+    delete: protectedProcedure
+      .input(z.object({ templateId: z.number() }))
+      .mutation(async ({ ctx, input }) => {
+        const db = await getDb();
+        if (!db) throw new Error("Database not available");
+
+        await db.delete(teamTemplates)
+          .where(and(
+            eq(teamTemplates.id, input.templateId),
+            eq(teamTemplates.userId, ctx.user.id)
+          ));
+
+        return { success: true };
+      }),
+
+    // Use template (increment usage count)
+    use: protectedProcedure
+      .input(z.object({ templateId: z.number() }))
+      .mutation(async ({ ctx, input }) => {
+        const db = await getDb();
+        if (!db) throw new Error("Database not available");
+
+        await db.update(teamTemplates)
+          .set({ timesUsed: sql`${teamTemplates.timesUsed} + 1` })
+          .where(and(
+            eq(teamTemplates.id, input.templateId),
+            eq(teamTemplates.userId, ctx.user.id)
+          ));
+
+        return { success: true };
+      }),
+  }),
+
+  // Achievements
+  achievements: router({
+    // List user's achievements
+    list: protectedProcedure.query(async ({ ctx }) => {
+      const db = await getDb();
+      if (!db) return [];
+
+      return db.select()
+        .from(achievements)
+        .where(eq(achievements.userId, ctx.user.id))
+        .orderBy(desc(achievements.isCompleted), desc(achievements.unlockedAt));
+    }),
+
+    // Initialize achievements for new user
+    initialize: protectedProcedure.mutation(async ({ ctx }) => {
+      const db = await getDb();
+      if (!db) throw new Error("Database not available");
+
+      // Check if already initialized
+      const existing = await db.select()
+        .from(achievements)
+        .where(eq(achievements.userId, ctx.user.id))
+        .limit(1);
+
+      if (existing.length > 0) return { success: true, message: "Already initialized" };
+
+      // Define all achievements
+      const achievementDefs = [
+        { type: "first_win", name: "First Victory", description: "Win your first contest", icon: "🏆", target: 1 },
+        { type: "contests_10", name: "Getting Started", description: "Join 10 contests", icon: "🎯", target: 10 },
+        { type: "contests_50", name: "Regular Player", description: "Join 50 contests", icon: "⭐", target: 50 },
+        { type: "contests_100", name: "Century Club", description: "Join 100 contests", icon: "💯", target: 100 },
+        { type: "top_10_finish", name: "Top 10", description: "Finish in top 10 in a contest", icon: "🥇", target: 1 },
+        { type: "top_3_finish", name: "Podium Finish", description: "Finish in top 3 in a contest", icon: "🏅", target: 1 },
+        { type: "perfect_captain", name: "Captain Marvel", description: "Your captain scores 100+ points", icon: "👑", target: 1 },
+        { type: "streak_3", name: "Hat-trick", description: "Win 3 contests in a row", icon: "🔥", target: 3 },
+        { type: "streak_5", name: "On Fire", description: "Win 5 contests in a row", icon: "🔥🔥", target: 5 },
+        { type: "century_points", name: "Century", description: "Score 100+ points in a contest", icon: "💪", target: 1 },
+        { type: "double_century", name: "Double Century", description: "Score 200+ points in a contest", icon: "🚀", target: 1 },
+      ];
+
+      await db.insert(achievements).values(
+        achievementDefs.map(def => ({
+          userId: ctx.user.id,
+          ...def,
+        }))
+      );
+
+      return { success: true };
+    }),
+
+    // Update achievement progress
+    updateProgress: protectedProcedure
+      .input(z.object({
+        type: z.string(),
+        increment: z.number().default(1),
+      }))
+      .mutation(async ({ ctx, input }) => {
+        const db = await getDb();
+        if (!db) throw new Error("Database not available");
+
+        const [achievement] = await db.select()
+          .from(achievements)
+          .where(and(
+            eq(achievements.userId, ctx.user.id),
+            eq(achievements.type, input.type)
+          ))
+          .limit(1);
+
+        if (!achievement) return { success: false, message: "Achievement not found" };
+        if (achievement.isCompleted) return { success: true, message: "Already completed" };
+
+        const newProgress = achievement.progress + input.increment;
+        const isNowCompleted = newProgress >= achievement.target;
+
+        await db.update(achievements)
+          .set({
+            progress: newProgress,
+            isCompleted: isNowCompleted,
+            unlockedAt: isNowCompleted ? new Date() : null,
+          })
+          .where(eq(achievements.id, achievement.id));
+
+        return { 
+          success: true, 
+          completed: isNowCompleted,
+          achievement: isNowCompleted ? achievement : null 
+        };
+      }),
+  }),
+
+  // User preferences
+  preferences: router({
+    // Get user preferences
+    get: protectedProcedure.query(async ({ ctx }) => {
+      const db = await getDb();
+      if (!db) return null;
+
+      const [prefs] = await db.select()
+        .from(userPreferences)
+        .where(eq(userPreferences.userId, ctx.user.id))
+        .limit(1);
+
+      return prefs;
+    }),
+
+    // Update preferences
+    update: protectedProcedure
+      .input(z.object({
+        theme: z.enum(["light", "dark", "system"]).optional(),
+        language: z.string().optional(),
+        pushNotifications: z.boolean().optional(),
+        emailNotifications: z.boolean().optional(),
+        tossAlerts: z.boolean().optional(),
+        matchReminders: z.boolean().optional(),
+        hasCompletedOnboarding: z.boolean().optional(),
+      }))
+      .mutation(async ({ ctx, input }) => {
+        const db = await getDb();
+        if (!db) throw new Error("Database not available");
+
+        // Check if preferences exist
+        const [existing] = await db.select()
+          .from(userPreferences)
+          .where(eq(userPreferences.userId, ctx.user.id))
+          .limit(1);
+
+        if (existing) {
+          await db.update(userPreferences)
+            .set(input)
+            .where(eq(userPreferences.userId, ctx.user.id));
+        } else {
+          await db.insert(userPreferences).values({
+            userId: ctx.user.id,
+            ...input,
+          });
+        }
+
+        return { success: true };
       }),
   }),
 });
