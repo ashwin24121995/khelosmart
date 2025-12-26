@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { OfflineIndicator } from "@/components/OfflineIndicator";
+import { useLanguage } from "@/contexts/LanguageContext";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -29,11 +30,12 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   const { user, isAuthenticated, logout, loading } = useAuth();
+  const { t } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { href: "/matches", label: "Matches", icon: Calendar },
-    { href: "/contests", label: "Contests", icon: Trophy },
+    { href: "/matches", label: t("common.matches"), icon: Calendar },
+    { href: "/contests", label: t("common.contests"), icon: Trophy },
     { href: "/how-to-play", label: "How to Play" },
   ];
 
@@ -89,7 +91,7 @@ export default function Layout({ children }: LayoutProps) {
                   <DropdownMenuItem asChild>
                     <Link href="/profile" className="flex items-center gap-2 cursor-pointer">
                       <User className="h-4 w-4" />
-                      Profile
+                      {t("common.profile")}
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
@@ -98,14 +100,14 @@ export default function Layout({ children }: LayoutProps) {
                     className="flex items-center gap-2 text-destructive cursor-pointer"
                   >
                     <LogOut className="h-4 w-4" />
-                    Logout
+                    {t("common.logout")}
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             ) : (
               <div className="flex items-center gap-2">
                 <Button variant="ghost" asChild className="text-white hover:bg-gray-800 hover:text-white">
-                  <Link href="/login">Login</Link>
+                  <Link href="/login">{t("common.login")}</Link>
                 </Button>
                 <Button asChild>
                   <Link href="/register">Sign Up</Link>
@@ -171,8 +173,8 @@ export default function Layout({ children }: LayoutProps) {
             <div>
               <h4 className="font-semibold mb-4 text-white">Quick Links</h4>
               <ul className="space-y-2 text-sm">
-                <li><Link href="/matches" className="text-gray-400 hover:text-primary">Matches</Link></li>
-                <li><Link href="/contests" className="text-gray-400 hover:text-primary">Contests</Link></li>
+                <li><Link href="/matches" className="text-gray-400 hover:text-primary">{t("common.matches")}</Link></li>
+                <li><Link href="/contests" className="text-gray-400 hover:text-primary">{t("common.contests")}</Link></li>
                 <li><Link href="/how-to-play" className="text-gray-400 hover:text-primary">How to Play</Link></li>
                 <li><Link href="/faq" className="text-gray-400 hover:text-primary">FAQ</Link></li>
               </ul>

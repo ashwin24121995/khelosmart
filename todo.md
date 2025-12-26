@@ -145,3 +145,6 @@
 - [x] Wire up achievement badges to user dashboard
 - [x] Create user profile page with achievements, performance history, and team templates
 - [x] Push changes to GitHub
+
+## Bug Fixes
+- [x] Fix language switching to update in real-time
