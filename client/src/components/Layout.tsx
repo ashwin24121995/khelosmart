@@ -2,6 +2,8 @@ import { Link } from "wouter";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { OfflineIndicator } from "@/components/OfflineIndicator";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -62,6 +64,8 @@ export default function Layout({ children }: LayoutProps) {
           <div className="flex items-center gap-2">
             {/* Theme Toggle */}
             <ThemeToggle />
+            {/* Language Switcher */}
+            <LanguageSwitcher />
             {loading ? (
               <div className="h-8 w-20 bg-gray-700 animate-pulse rounded" />
             ) : isAuthenticated ? (
@@ -145,6 +149,9 @@ export default function Layout({ children }: LayoutProps) {
       <main className="flex-1">
         {children}
       </main>
+
+      {/* Offline Indicator */}
+      <OfflineIndicator />
 
       {/* Footer */}
       <footer className="border-t border-gray-800 bg-black text-white">

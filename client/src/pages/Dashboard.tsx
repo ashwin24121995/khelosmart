@@ -14,8 +14,10 @@ import {
   Target,
   TrendingUp,
   Calendar,
-  ArrowRight
+  ArrowRight,
+  Award
 } from "lucide-react";
+import { AchievementBadges } from "@/components/AchievementBadges";
 import { useEffect } from "react";
 import { format } from "date-fns";
 
@@ -119,6 +121,10 @@ export default function Dashboard() {
               <Users className="h-4 w-4" />
               My Teams
             </TabsTrigger>
+            <TabsTrigger value="achievements" className="gap-2">
+              <Award className="h-4 w-4" />
+              Achievements
+            </TabsTrigger>
           </TabsList>
 
           <TabsContent value="contests">
@@ -220,6 +226,10 @@ export default function Dashboard() {
                 ))}
               </div>
             )}
+          </TabsContent>
+
+          <TabsContent value="achievements">
+            <AchievementBadges />
           </TabsContent>
         </Tabs>
       </div>
