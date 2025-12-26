@@ -116,4 +116,4 @@
 - [x] Show time remaining before teams get locked
 - [x] Implement push notifications for toss completion
 - [x] Auto-refresh squad list after toss
-- [ ] Push changes to GitHub
+- [x] Push changes to GitHub
