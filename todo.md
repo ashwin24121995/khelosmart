@@ -98,3 +98,8 @@
 - [x] Generate cricket action shot for features section
 - [x] Add images to homepage sections
 - [x] Push changes to GitHub
+
+## Image Optimization
+- [x] Convert PNG images to WebP format
+- [x] Update image references in Home.tsx
+- [ ] Push changes to GitHub

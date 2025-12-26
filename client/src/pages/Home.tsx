@@ -30,7 +30,7 @@ export default function Home() {
         {/* Stadium Background Image */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/images/hero-cricket-stadium.png')" }}
+          style={{ backgroundImage: "url('/images/hero-cricket-stadium.webp')" }}
         />
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
@@ -84,7 +84,7 @@ export default function Home() {
             <div className="relative order-2 lg:order-1">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img 
-                  src="/images/fantasy-team-creation.png" 
+                  src="/images/fantasy-team-creation.webp" 
                   alt="Fantasy Team Selection Interface" 
                   className="w-full h-auto"
                 />
@@ -158,7 +158,7 @@ export default function Home() {
             {/* Batsman Card */}
             <div className="relative rounded-2xl overflow-hidden group">
               <img 
-                src="/images/cricket-action-batsman.png" 
+                src="/images/cricket-action-batsman.webp" 
                 alt="Cricket Batsman in Action" 
                 className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
               />
@@ -174,7 +174,7 @@ export default function Home() {
             {/* Bowler Card */}
             <div className="relative rounded-2xl overflow-hidden group">
               <img 
-                src="/images/cricket-bowler-action.png" 
+                src="/images/cricket-bowler-action.webp" 
                 alt="Cricket Bowler in Action" 
                 className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
               />
@@ -400,7 +400,7 @@ export default function Home() {
             <div className="hidden lg:flex justify-center">
               <div className="relative">
                 <img 
-                  src="/images/trophy-celebration.png" 
+                  src="/images/trophy-celebration.webp" 
                   alt="Championship Trophy" 
                   className="w-72 h-72 object-contain drop-shadow-2xl"
                 />
