@@ -141,6 +141,73 @@ export const appRouter = router({
         return getMatchInfo(input.matchId);
       }),
 
+    // Check if team creation is allowed for a match
+    // Returns: canCreate (boolean), reason (string), tossInfo (object)
+    getTeamCreationStatus: publicProcedure
+      .input(z.object({ matchId: z.string() }))
+      .query(async ({ input }) => {
+        const matchInfo = await getMatchInfo(input.matchId);
+        const matches = await getLiveScores();
+        const matchState = matches.find(m => m.id === input.matchId);
+        
+        if (!matchInfo) {
+          return {
+            canCreate: false,
+            canEdit: false,
+            reason: "Match not found",
+            tossInfo: null,
+            matchStatus: "unknown",
+          };
+        }
+
+        // Check match state
+        const isLive = matchState?.ms === "live";
+        const isCompleted = matchState?.ms === "result";
+        const isUpcoming = matchState?.ms === "fixture";
+        
+        // Check if toss has happened
+        const tossCompleted = !!matchInfo.tossWinner;
+        
+        // Determine team creation/edit status
+        let canCreate = false;
+        let canEdit = false;
+        let reason = "";
+        
+        if (isCompleted) {
+          canCreate = false;
+          canEdit = false;
+          reason = "Match has ended";
+        } else if (isLive) {
+          canCreate = false;
+          canEdit = false;
+          reason = "Match has started - team is locked";
+        } else if (isUpcoming && !tossCompleted) {
+          canCreate = false;
+          canEdit = false;
+          reason = "Waiting for toss - team creation opens after toss";
+        } else if (isUpcoming && tossCompleted) {
+          canCreate = true;
+          canEdit = true;
+          reason = "Toss completed - create your team before the match starts!";
+        } else {
+          canCreate = false;
+          canEdit = false;
+          reason = "Unable to determine match status";
+        }
+
+        return {
+          canCreate,
+          canEdit,
+          reason,
+          tossInfo: tossCompleted ? {
+            winner: matchInfo.tossWinner,
+            choice: matchInfo.tossChoice,
+          } : null,
+          matchStatus: isLive ? "live" : isCompleted ? "completed" : "upcoming",
+          matchDateTime: matchInfo.dateTimeGMT,
+        };
+      }),
+
     // Get fantasy squad for a match
     getSquad: publicProcedure
       .input(z.object({ matchId: z.string() }))
@@ -351,6 +418,27 @@ export const appRouter = router({
         const db = await getDb();
         if (!db) throw new Error("Database not available");
 
+        // Check if team creation is allowed (after toss, before match starts)
+        const matchInfo = await getMatchInfo(input.matchId);
+        const matches = await getLiveScores();
+        const matchState = matches.find(m => m.id === input.matchId);
+        
+        if (!matchInfo) throw new Error("Match not found");
+        
+        const isLive = matchState?.ms === "live";
+        const isCompleted = matchState?.ms === "result";
+        const tossCompleted = !!matchInfo.tossWinner;
+        
+        if (isCompleted) {
+          throw new Error("Match has ended - cannot create team");
+        }
+        if (isLive) {
+          throw new Error("Match has started - team creation is locked");
+        }
+        if (!tossCompleted) {
+          throw new Error("Toss not completed yet - team creation opens after toss");
+        }
+
         // Validate team composition (11 players)
         if (input.players.length !== 11) {
           throw new Error("Team must have exactly 11 players");
@@ -377,6 +465,79 @@ export const appRouter = router({
         });
 
         return { success: true, teamId: result.insertId };
+      }),
+
+    // Update an existing fantasy team (allowed until match starts)
+    update: protectedProcedure
+      .input(z.object({
+        teamId: z.number(),
+        name: z.string().optional(),
+        captainId: z.string(),
+        viceCaptainId: z.string(),
+        players: z.array(z.object({
+          id: z.string(),
+          name: z.string(),
+          role: z.string(),
+          team: z.string(),
+        })),
+      }))
+      .mutation(async ({ ctx, input }) => {
+        const db = await getDb();
+        if (!db) throw new Error("Database not available");
+
+        // Get existing team
+        const [team] = await db.select()
+          .from(fantasyTeams)
+          .where(and(
+            eq(fantasyTeams.id, input.teamId),
+            eq(fantasyTeams.userId, ctx.user.id)
+          ))
+          .limit(1);
+
+        if (!team) throw new Error("Team not found");
+
+        // Check if editing is allowed (match not started)
+        const matchInfo = await getMatchInfo(team.matchId);
+        const matches = await getLiveScores();
+        const matchState = matches.find(m => m.id === team.matchId);
+        
+        if (!matchInfo) throw new Error("Match not found");
+        
+        const isLive = matchState?.ms === "live";
+        const isCompleted = matchState?.ms === "result";
+        
+        if (isCompleted) {
+          throw new Error("Match has ended - cannot edit team");
+        }
+        if (isLive) {
+          throw new Error("Match has started - team is locked");
+        }
+
+        // Validate team composition (11 players)
+        if (input.players.length !== 11) {
+          throw new Error("Team must have exactly 11 players");
+        }
+
+        // Validate captain and vice-captain are in the team
+        const playerIds = input.players.map(p => p.id);
+        if (!playerIds.includes(input.captainId)) {
+          throw new Error("Captain must be in the team");
+        }
+        if (!playerIds.includes(input.viceCaptainId)) {
+          throw new Error("Vice-captain must be in the team");
+        }
+
+        await db.update(fantasyTeams)
+          .set({
+            name: input.name || team.name,
+            captainId: input.captainId,
+            viceCaptainId: input.viceCaptainId,
+            players: input.players,
+            updatedAt: new Date(),
+          })
+          .where(eq(fantasyTeams.id, input.teamId));
+
+        return { success: true };
       }),
 
     // Get user's teams

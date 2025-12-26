@@ -15,7 +15,10 @@ import {
   Star,
   Check,
   X,
-  AlertCircle
+  AlertCircle,
+  Lock,
+  Clock,
+  Trophy
 } from "lucide-react";
 import { useState, useMemo, useEffect } from "react";
 import { toast } from "sonner";
@@ -78,6 +81,12 @@ export default function CreateTeam() {
   const { data: matchInfo } = trpc.matches.getDetails.useQuery(
     { matchId: matchId || "" },
     { enabled: !!matchId }
+  );
+
+  // Check team creation status (toss check)
+  const { data: creationStatus, isLoading: statusLoading } = trpc.matches.getTeamCreationStatus.useQuery(
+    { matchId: matchId || "" },
+    { enabled: !!matchId, refetchInterval: 30000 } // Refresh every 30 seconds
   );
 
   // Create team mutation
@@ -246,11 +255,80 @@ export default function CreateTeam() {
     );
   }
 
-  if (squadLoading || authLoading || canPlayLoading) {
+  if (squadLoading || authLoading || canPlayLoading || statusLoading) {
     return (
       <Layout>
         <div className="flex items-center justify-center py-20">
           <Loader2 className="h-8 w-8 animate-spin text-primary" />
+        </div>
+      </Layout>
+    );
+  }
+
+  // Show lock screen if team creation is not allowed (before toss or match started)
+  if (creationStatus && !creationStatus.canCreate) {
+    return (
+      <Layout>
+        <div className="container py-8">
+          <Button variant="ghost" asChild className="mb-6">
+            <Link href={`/match/${matchId}`}>
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Back to Match
+            </Link>
+          </Button>
+          
+          <Card className="max-w-lg mx-auto">
+            <CardContent className="py-12 text-center">
+              {creationStatus.matchStatus === "live" || creationStatus.matchStatus === "completed" ? (
+                <>
+                  <Lock className="h-16 w-16 mx-auto text-red-500 mb-6" />
+                  <h2 className="text-2xl font-bold mb-3">Team Locked</h2>
+                  <p className="text-muted-foreground mb-6">
+                    {creationStatus.reason}
+                  </p>
+                </>
+              ) : (
+                <>
+                  <Clock className="h-16 w-16 mx-auto text-amber-500 mb-6 animate-pulse" />
+                  <h2 className="text-2xl font-bold mb-3">Waiting for Toss</h2>
+                  <p className="text-muted-foreground mb-4">
+                    Team creation will open after the toss is completed.
+                  </p>
+                  <div className="bg-muted/50 rounded-lg p-4 mb-6">
+                    <p className="text-sm text-muted-foreground">
+                      <strong>Why wait for toss?</strong><br/>
+                      After the toss, you'll know which team is batting/bowling first, helping you make better player selections!
+                    </p>
+                  </div>
+                  <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    <span>Checking for toss result...</span>
+                  </div>
+                </>
+              )}
+              
+              {creationStatus.tossInfo && (
+                <div className="mt-6 p-4 bg-primary/10 rounded-lg">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <Trophy className="h-5 w-5 text-primary" />
+                    <span className="font-semibold">Toss Result</span>
+                  </div>
+                  <p className="text-sm">
+                    <strong className="capitalize">{creationStatus.tossInfo.winner}</strong> won the toss and chose to <strong>{creationStatus.tossInfo.choice}</strong>
+                  </p>
+                </div>
+              )}
+              
+              <div className="flex gap-3 justify-center mt-6">
+                <Button asChild variant="outline">
+                  <Link href="/matches">Browse Matches</Link>
+                </Button>
+                <Button asChild>
+                  <Link href={`/match/${matchId}`}>View Match Details</Link>
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </Layout>
     );

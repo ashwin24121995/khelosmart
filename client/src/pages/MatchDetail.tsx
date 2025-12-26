@@ -14,7 +14,10 @@ import {
   Users,
   ArrowLeft,
   Clock,
-  AlertCircle
+  AlertCircle,
+  Lock,
+  Unlock,
+  Coins
 } from "lucide-react";
 import { format } from "date-fns";
 import { toast } from "sonner";
@@ -36,6 +39,12 @@ export default function MatchDetail() {
   );
 
   const hasSquadData = squadData && squadData.length > 0 && squadData.some(team => team.players.length > 0);
+
+  // Check team creation status (toss check)
+  const { data: creationStatus } = trpc.matches.getTeamCreationStatus.useQuery(
+    { matchId: id || "" },
+    { enabled: !!id, refetchInterval: 30000 } // Refresh every 30 seconds
+  );
 
   const { data: contests, isLoading: contestsLoading } = trpc.contests.list.useQuery(
     { status: "upcoming" }
@@ -191,6 +200,40 @@ export default function MatchDetail() {
             {matchInfo.status && (
               <div className="mt-4 p-3 bg-muted rounded-lg text-center">
                 <p className="text-sm">{matchInfo.status}</p>
+              </div>
+            )}
+
+            {/* Toss Info */}
+            {creationStatus?.tossInfo && (
+              <div className="mt-4 p-4 bg-primary/10 rounded-lg">
+                <div className="flex items-center justify-center gap-2 mb-2">
+                  <Coins className="h-5 w-5 text-primary" />
+                  <span className="font-semibold text-primary">Toss Result</span>
+                </div>
+                <p className="text-center">
+                  <strong className="capitalize">{creationStatus.tossInfo.winner}</strong> won the toss and elected to <strong>{creationStatus.tossInfo.choice}</strong>
+                </p>
+              </div>
+            )}
+
+            {/* Team Creation Status */}
+            {creationStatus && (
+              <div className={`mt-4 p-3 rounded-lg flex items-center justify-center gap-2 ${
+                creationStatus.canCreate 
+                  ? 'bg-green-500/10 text-green-700 dark:text-green-400' 
+                  : 'bg-amber-500/10 text-amber-700 dark:text-amber-400'
+              }`}>
+                {creationStatus.canCreate ? (
+                  <>
+                    <Unlock className="h-4 w-4" />
+                    <span className="text-sm font-medium">Team creation is open! Create your team now.</span>
+                  </>
+                ) : (
+                  <>
+                    <Lock className="h-4 w-4" />
+                    <span className="text-sm font-medium">{creationStatus.reason}</span>
+                  </>
+                )}
               </div>
             )}
           </CardContent>

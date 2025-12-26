@@ -103,3 +103,10 @@
 - [x] Convert PNG images to WebP format
 - [x] Update image references in Home.tsx
 - [x] Push changes to GitHub
+
+## After Toss Team Creation Feature
+- [x] Add backend endpoint to check if team creation is allowed (toss done, match not started)
+- [x] Update team creation UI to show lock status before toss
+- [x] Allow team edits until first ball (match goes live)
+- [x] Display toss information on match details page
+- [ ] Push changes to GitHub
