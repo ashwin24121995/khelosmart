@@ -102,4 +102,4 @@
 ## Image Optimization
 - [x] Convert PNG images to WebP format
 - [x] Update image references in Home.tsx
-- [ ] Push changes to GitHub
+- [x] Push changes to GitHub
