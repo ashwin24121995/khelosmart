@@ -20,9 +20,11 @@ import {
 import { AchievementBadges } from "@/components/AchievementBadges";
 import { useEffect } from "react";
 import { format } from "date-fns";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Dashboard() {
   const { user, isAuthenticated, loading: authLoading } = useAuth();
+  const { t } = useLanguage();
 
   const { data: stats, isLoading: statsLoading } = trpc.user.getStats.useQuery(
     undefined,
@@ -61,8 +63,8 @@ export default function Dashboard() {
       <div className="container py-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-2">Welcome back, {user?.name || "Player"}!</h1>
-          <p className="text-muted-foreground">Track your fantasy cricket journey</p>
+          <h1 className="text-3xl font-bold mb-2">{t("dashboard.welcomeBack")}, {user?.name || "Player"}!</h1>
+          <p className="text-muted-foreground">{t("dashboard.trackJourney")}</p>
         </div>
 
         {/* Stats Cards */}
@@ -74,7 +76,7 @@ export default function Dashboard() {
                   <Trophy className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Total Contests</p>
+                  <p className="text-sm text-muted-foreground">{t("dashboard.totalContests")}</p>
                   <p className="text-2xl font-bold">{stats?.totalContests || 0}</p>
                 </div>
               </div>
@@ -88,7 +90,7 @@ export default function Dashboard() {
                   <Target className="h-6 w-6 text-green-600" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Top Finishes</p>
+                  <p className="text-sm text-muted-foreground">{t("dashboard.topFinishes")}</p>
                   <p className="text-2xl font-bold">{stats?.totalWins || 0}</p>
                 </div>
               </div>
@@ -102,7 +104,7 @@ export default function Dashboard() {
                   <TrendingUp className="h-6 w-6 text-blue-600" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Total Points</p>
+                  <p className="text-sm text-muted-foreground">{t("dashboard.totalPoints")}</p>
                   <p className="text-2xl font-bold">{stats?.totalPoints || 0}</p>
                 </div>
               </div>
@@ -115,15 +117,15 @@ export default function Dashboard() {
           <TabsList className="mb-6">
             <TabsTrigger value="contests" className="gap-2">
               <Trophy className="h-4 w-4" />
-              My Contests
+              {t("dashboard.myContests")}
             </TabsTrigger>
             <TabsTrigger value="teams" className="gap-2">
               <Users className="h-4 w-4" />
-              My Teams
+              {t("dashboard.myTeams")}
             </TabsTrigger>
             <TabsTrigger value="achievements" className="gap-2">
               <Award className="h-4 w-4" />
-              Achievements
+              {t("dashboard.achievements")}
             </TabsTrigger>
           </TabsList>
 
@@ -136,9 +138,9 @@ export default function Dashboard() {
               <Card>
                 <CardContent className="py-12 text-center">
                   <Trophy className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
-                  <p className="text-muted-foreground mb-4">You haven't joined any contests yet.</p>
+                  <p className="text-muted-foreground mb-4">{t("dashboard.noContests")}</p>
                   <Button asChild>
-                    <Link href="/matches">Browse Matches</Link>
+                    <Link href="/matches">{t("dashboard.browseMatches")}</Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -161,11 +163,12 @@ export default function Dashboard() {
                             entry.contest?.status === "live" ? "destructive" :
                             entry.contest?.status === "upcoming" ? "default" : "secondary"
                           }>
-                            {entry.contest?.status}
+                            {entry.contest?.status === "live" ? t("match.live") :
+                             entry.contest?.status === "upcoming" ? t("match.upcoming") : t("match.completed")}
                           </Badge>
                           <div className="text-right">
-                            <p className="font-bold">{entry.entry.finalPoints || 0} pts</p>
-                            <p className="text-xs text-muted-foreground">Rank #{entry.entry.finalRank || "-"}</p>
+                            <p className="font-bold">{entry.entry.finalPoints || 0} {t("dashboard.pts")}</p>
+                            <p className="text-xs text-muted-foreground">{t("dashboard.rank")} #{entry.entry.finalRank || "-"}</p>
                           </div>
                           <Button variant="ghost" size="icon" asChild>
                             <Link href={`/contest/${entry.contest?.id}`}>
@@ -190,9 +193,9 @@ export default function Dashboard() {
               <Card>
                 <CardContent className="py-12 text-center">
                   <Users className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
-                  <p className="text-muted-foreground mb-4">You haven't created any teams yet.</p>
+                  <p className="text-muted-foreground mb-4">{t("dashboard.noTeams")}</p>
                   <Button asChild>
-                    <Link href="/matches">Create Your First Team</Link>
+                    <Link href="/matches">{t("dashboard.createFirstTeam")}</Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -215,10 +218,10 @@ export default function Dashboard() {
                       </div>
                       <div className="flex items-center justify-between">
                         <span className="text-sm">
-                          {(team.players as any[])?.length || 0} Players
+                          {(team.players as any[])?.length || 0} {t("dashboard.players")}
                         </span>
                         <span className="font-bold text-primary">
-                          {team.totalPoints || 0} pts
+                          {team.totalPoints || 0} {t("dashboard.pts")}
                         </span>
                       </div>
                     </CardContent>

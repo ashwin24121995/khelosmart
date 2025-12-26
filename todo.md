@@ -148,3 +148,6 @@
 
 ## Bug Fixes
 - [x] Fix language switching to update in real-time
+- [x] Expand translations to cover entire website content (hero, features, buttons, descriptions)
+- [x] Update Home page to use translations
+- [x] Update other pages to use translations
