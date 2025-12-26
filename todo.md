@@ -110,3 +110,10 @@
 - [x] Allow team edits until first ball (match goes live)
 - [x] Display toss information on match details page
 - [x] Push changes to GitHub
+
+## Match Countdown & Notifications
+- [x] Add countdown timer to match start on team creation page
+- [x] Show time remaining before teams get locked
+- [x] Implement push notifications for toss completion
+- [x] Auto-refresh squad list after toss
+- [ ] Push changes to GitHub

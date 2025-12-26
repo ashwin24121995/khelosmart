@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import { TossNotificationWatcher } from "@/components/TossNotificationWatcher";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -218,21 +219,36 @@ export default function MatchDetail() {
 
             {/* Team Creation Status */}
             {creationStatus && (
-              <div className={`mt-4 p-3 rounded-lg flex items-center justify-center gap-2 ${
+              <div className={`mt-4 p-3 rounded-lg flex items-center justify-between gap-2 ${
                 creationStatus.canCreate 
                   ? 'bg-green-500/10 text-green-700 dark:text-green-400' 
                   : 'bg-amber-500/10 text-amber-700 dark:text-amber-400'
               }`}>
-                {creationStatus.canCreate ? (
-                  <>
-                    <Unlock className="h-4 w-4" />
-                    <span className="text-sm font-medium">Team creation is open! Create your team now.</span>
-                  </>
-                ) : (
-                  <>
-                    <Lock className="h-4 w-4" />
-                    <span className="text-sm font-medium">{creationStatus.reason}</span>
-                  </>
+                <div className="flex items-center gap-2">
+                  {creationStatus.canCreate ? (
+                    <>
+                      <Unlock className="h-4 w-4" />
+                      <span className="text-sm font-medium">Team creation is open! Create your team now.</span>
+                    </>
+                  ) : (
+                    <>
+                      <Lock className="h-4 w-4" />
+                      <span className="text-sm font-medium">{creationStatus.reason}</span>
+                    </>
+                  )}
+                </div>
+                
+                {/* Toss Notification Watcher - only show when waiting for toss */}
+                {!creationStatus.tossInfo && creationStatus.matchStatus === "upcoming" && id && (
+                  <TossNotificationWatcher
+                    matchId={id}
+                    team1={matchInfo?.teams?.[0]}
+                    team2={matchInfo?.teams?.[1]}
+                    onTossComplete={() => {
+                      // Refresh the page data
+                      window.location.reload();
+                    }}
+                  />
                 )}
               </div>
             )}

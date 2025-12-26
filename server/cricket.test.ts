@@ -233,7 +233,7 @@ describe("User Profile API", () => {
 
     expect(result).toBeDefined();
     expect(typeof result.canPlay).toBe("boolean");
-  });
+  }, 15000); // Increase timeout for database operation
 });
 
 describe("Auth API", () => {

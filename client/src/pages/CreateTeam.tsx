@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import { MatchCountdown } from "@/components/MatchCountdown";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -71,8 +72,8 @@ export default function CreateTeam() {
     { enabled: isAuthenticated }
   );
 
-  // Get squad data
-  const { data: squadData, isLoading: squadLoading, error: squadError } = trpc.matches.getSquad.useQuery(
+  // Get squad data with auto-refresh after toss
+  const { data: squadData, isLoading: squadLoading, error: squadError, refetch: refetchSquad } = trpc.matches.getSquad.useQuery(
     { matchId: matchId || "" },
     { enabled: !!matchId }
   );
@@ -88,6 +89,24 @@ export default function CreateTeam() {
     { matchId: matchId || "" },
     { enabled: !!matchId, refetchInterval: 30000 } // Refresh every 30 seconds
   );
+
+  // Track previous toss state to detect when toss happens
+  const [previousTossState, setPreviousTossState] = useState<boolean | null>(null);
+
+  // Auto-refresh squad when toss is completed
+  useEffect(() => {
+    if (!creationStatus) return;
+    
+    const tossCompleted = !!creationStatus.tossInfo;
+    
+    // If toss just happened (state changed from false to true), refresh squad
+    if (previousTossState === false && tossCompleted) {
+      toast.info("Toss completed! Refreshing squad data...");
+      refetchSquad();
+    }
+    
+    setPreviousTossState(tossCompleted);
+  }, [creationStatus, previousTossState, refetchSquad]);
 
   // Create team mutation
   const createTeamMutation = trpc.teams.create.useMutation({
@@ -405,6 +424,18 @@ export default function CreateTeam() {
           </div>
           <div className="w-20" />
         </div>
+
+        {/* Countdown Timer */}
+        {creationStatus?.matchDateTime && creationStatus.canCreate && (
+          <MatchCountdown 
+            matchDateTime={creationStatus.matchDateTime}
+            onMatchStart={() => {
+              toast.error("Match has started! Team is now locked.");
+              setLocation(`/match/${matchId}`);
+            }}
+            className="mb-6"
+          />
+        )}
 
         {/* Progress */}
         <div className="flex items-center justify-center gap-2 mb-8">
