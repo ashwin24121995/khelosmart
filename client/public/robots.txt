@@ -1,13 +1,100 @@
 # Khelosmart Fantasy Cricket
-# www.khelosmart.com
+# https://khelosmart.com
+# Last updated: January 2026
 
+# Allow all crawlers to access public pages
 User-agent: *
 Allow: /
+Allow: /matches
+Allow: /contests
+Allow: /about
+Allow: /how-to-play
+Allow: /faq
+Allow: /terms
+Allow: /privacy
+Allow: /contact
+Allow: /responsible-gaming
+Allow: /fair-play
+Allow: /login
+Allow: /register
 
-# Sitemap
-Sitemap: https://www.khelosmart.com/sitemap.xml
-
-# Disallow admin/private areas
+# Disallow private/authenticated areas
 Disallow: /api/
 Disallow: /dashboard
 Disallow: /profile
+Disallow: /my-teams
+Disallow: /my-contests
+
+# Allow crawling of static assets
+Allow: /images/
+Allow: /logo.png
+Allow: /*.css
+Allow: /*.js
+Allow: /*.webp
+Allow: /*.png
+Allow: /*.jpg
+
+# Google Ads Bot specific rules
+User-agent: AdsBot-Google
+Allow: /
+Allow: /matches
+Allow: /contests
+Allow: /about
+Allow: /how-to-play
+Allow: /faq
+Allow: /terms
+Allow: /privacy
+Allow: /contact
+Allow: /responsible-gaming
+Allow: /fair-play
+Allow: /login
+Allow: /register
+Disallow: /api/
+Disallow: /dashboard
+Disallow: /profile
+
+# Google Mobile Ads Bot
+User-agent: AdsBot-Google-Mobile
+Allow: /
+Allow: /matches
+Allow: /contests
+Allow: /about
+Allow: /how-to-play
+Allow: /faq
+Allow: /terms
+Allow: /privacy
+Allow: /contact
+Allow: /responsible-gaming
+Allow: /fair-play
+Allow: /login
+Allow: /register
+Disallow: /api/
+Disallow: /dashboard
+Disallow: /profile
+
+# Googlebot
+User-agent: Googlebot
+Allow: /
+Disallow: /api/
+Disallow: /dashboard
+Disallow: /profile
+
+# Googlebot Image
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /*.webp
+Allow: /*.png
+Allow: /*.jpg
+
+# Bingbot
+User-agent: Bingbot
+Allow: /
+Disallow: /api/
+Disallow: /dashboard
+Disallow: /profile
+
+# Sitemap location
+Sitemap: https://khelosmart.com/sitemap.xml
+
+# Crawl delay (optional, be nice to servers)
+# Crawl-delay: 1

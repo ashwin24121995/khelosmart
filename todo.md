@@ -151,3 +151,15 @@
 - [x] Expand translations to cover entire website content (hero, features, buttons, descriptions)
 - [x] Update Home page to use translations
 - [x] Update other pages to use translations
+
+## Google Ads Cloaking Suspension Fix
+- [x] Implement Server-Side Rendering (SSR) for Express server
+- [x] Create SSR entry point for React app
+- [x] Pre-render critical pages (Home, Matches, About, How to Play, FAQ, Terms, Privacy)
+- [x] Ensure HTML response contains full content for crawlers
+- [x] Update robots.txt with proper configuration
+- [x] Create sitemap.xml with all public pages
+- [x] Add comprehensive SEO meta tags to all pages
+- [x] Test SSR with curl to verify HTML content
+- [ ] Verify Google AdsBot sees same content as users (after Railway deployment)
+- [ ] Push SSR implementation to GitHub
