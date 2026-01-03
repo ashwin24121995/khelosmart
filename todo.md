@@ -200,4 +200,4 @@
 - [x] Update SSR footer with 6 restricted statesdress
 
 ### Final Steps
-- [ ] Push all changes to GitHub
+- [x] Push all changes to GitHub
