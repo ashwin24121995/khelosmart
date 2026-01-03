@@ -115,24 +115,6 @@ function injectSSRContent(template: string, url: string): string {
     `<div id="root">${ssrContent}</div>`
   );
   
-  // Add a noscript fallback
-  const noscriptContent = `
-  <noscript>
-    <style>
-      #ssr-content { display: block !important; }
-    </style>
-    <div style="padding: 20px; text-align: center; background: #f0fdf4; border: 1px solid #bbf7d0; margin: 20px;">
-      <h2>JavaScript Required</h2>
-      <p>Please enable JavaScript to use Khelosmart. Our fantasy cricket platform requires JavaScript for the best experience.</p>
-      <p>Khelosmart is a FREE-TO-PLAY fantasy cricket platform. No real money involved.</p>
-    </div>
-  </noscript>
-  `;
-  
-  if (!html.includes('<noscript>')) {
-    html = html.replace('</body>', `${noscriptContent}\n</body>`);
-  }
-  
   return html;
 }
 
