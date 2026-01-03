@@ -199,9 +199,12 @@ export function serveStatic(app: Express) {
     );
   }
 
-  app.use(express.static(distPath));
+  // Serve static files EXCEPT index.html (we handle that with SSR)
+  app.use(express.static(distPath, {
+    index: false  // Don't serve index.html automatically for directory requests
+  }));
 
-  // fall through to index.html if the file doesn't exist (but not for API routes)
+  // Handle ALL routes with SSR-injected HTML (including root /)
   app.use("*", (req, res, next) => {
     // Don't serve index.html for API routes
     if (req.originalUrl.startsWith("/api")) {
@@ -214,11 +217,18 @@ export function serveStatic(app: Express) {
     // Read the built index.html and inject SSR content
     fs.readFile(indexPath, 'utf-8', (err, template) => {
       if (err) {
+        console.error('[SSR] Error reading index.html:', err);
         return res.sendFile(indexPath);
       }
       
-      const ssrPage = injectSSRContent(template, url);
-      res.status(200).set({ "Content-Type": "text/html" }).end(ssrPage);
+      try {
+        const ssrPage = injectSSRContent(template, url);
+        console.log(`[SSR] Serving SSR content for: ${url}`);
+        res.status(200).set({ "Content-Type": "text/html" }).end(ssrPage);
+      } catch (ssrError) {
+        console.error('[SSR] Error injecting SSR content:', ssrError);
+        res.sendFile(indexPath);
+      }
     });
   });
 }
