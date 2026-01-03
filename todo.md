@@ -207,4 +207,4 @@
 - [x] Move 18+ banner from top of page to footer (like dinedivinelive.com)
 - [x] Add more content to homepage (live matches, upcoming matches sections)
 - [x] Update SSR components with all changes
-- [ ] Push changes to GitHub
+- [x] Push changes to GitHub
