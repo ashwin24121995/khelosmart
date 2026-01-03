@@ -597,87 +597,61 @@ export default function Home() {
         </div>
       </section>
 
-      {/* User Testimonials Section */}
+      {/* Why Play Fantasy Cricket Section */}
       <section className="py-16 bg-background">
         <div className="container">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">What Our Players Say</h2>
+            <h2 className="text-3xl font-bold mb-4">Why Play Fantasy Cricket?</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Join thousands of satisfied cricket fans who trust Khelosmart for their fantasy cricket experience.
+              Fantasy cricket is more than just a game—it's a way to deepen your connection with the sport you love.
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-card border rounded-xl p-6">
-              <div className="flex items-center gap-1 mb-4">
-                {[1,2,3,4,5].map((star) => (
-                  <span key={star} className="text-yellow-500">★</span>
-                ))}
+              <div className="h-12 w-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-4">
+                <span className="text-2xl">🧠</span>
               </div>
-              <p className="text-muted-foreground mb-4 italic">
-                "Khelosmart has made fantasy cricket so much fun! I love that it's completely free to play. The interface is smooth and the live scoring keeps me engaged throughout the match."
+              <h3 className="font-semibold text-lg mb-3">Test Your Cricket Knowledge</h3>
+              <p className="text-muted-foreground text-sm">
+                Put your understanding of the game to the test. Analyze player form, pitch conditions, 
+                and match-ups to build winning teams. Every match is an opportunity to prove your expertise.
               </p>
-              <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center">
-                  <span className="font-semibold text-primary">RK</span>
-                </div>
-                <div>
-                  <p className="font-semibold text-sm">Rahul K.</p>
-                  <p className="text-xs text-muted-foreground">Mumbai, Maharashtra</p>
-                </div>
-              </div>
             </div>
             
             <div className="bg-card border rounded-xl p-6">
-              <div className="flex items-center gap-1 mb-4">
-                {[1,2,3,4,5].map((star) => (
-                  <span key={star} className="text-yellow-500">★</span>
-                ))}
+              <div className="h-12 w-12 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mb-4">
+                <span className="text-2xl">🎯</span>
               </div>
-              <p className="text-muted-foreground mb-4 italic">
-                "Finally a fantasy cricket platform that doesn't ask for money! I can enjoy the thrill of building my dream team without any financial risk. Highly recommended!"
+              <h3 className="font-semibold text-lg mb-3">Enhanced Match Experience</h3>
+              <p className="text-muted-foreground text-sm">
+                Every ball, every run, every wicket matters when you have skin in the game. 
+                Fantasy cricket transforms passive viewing into an engaging, interactive experience 
+                that keeps you hooked throughout the match.
               </p>
-              <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center">
-                  <span className="font-semibold text-primary">PS</span>
-                </div>
-                <div>
-                  <p className="font-semibold text-sm">Priya S.</p>
-                  <p className="text-xs text-muted-foreground">Bangalore, Karnataka</p>
-                </div>
-              </div>
             </div>
             
             <div className="bg-card border rounded-xl p-6">
-              <div className="flex items-center gap-1 mb-4">
-                {[1,2,3,4,5].map((star) => (
-                  <span key={star} className="text-yellow-500">★</span>
-                ))}
+              <div className="h-12 w-12 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center mb-4">
+                <span className="text-2xl">🤝</span>
               </div>
-              <p className="text-muted-foreground mb-4 italic">
-                "The points system is transparent and fair. I've learned so much about cricket strategy by playing on Khelosmart. It's the perfect way to test your cricket knowledge!"
+              <h3 className="font-semibold text-lg mb-3">Connect with Fellow Fans</h3>
+              <p className="text-muted-foreground text-sm">
+                Join a community of cricket enthusiasts. Compare strategies, discuss player picks, 
+                and enjoy friendly competition with friends and family. Cricket is better when shared!
               </p>
-              <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center">
-                  <span className="font-semibold text-primary">AM</span>
-                </div>
-                <div>
-                  <p className="font-semibold text-sm">Amit M.</p>
-                  <p className="text-xs text-muted-foreground">Delhi, NCR</p>
-                </div>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Platform Statistics Section */}
+      {/* Platform Highlights Section */}
       <section className="py-16 bg-muted/30">
         <div className="container">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Platform Statistics</h2>
+            <h2 className="text-3xl font-bold mb-4">Platform Highlights</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Trusted by cricket fans across India for free-to-play fantasy cricket entertainment.
+              What makes Khelosmart the right choice for your fantasy cricket journey.
             </p>
           </div>
           
@@ -688,9 +662,9 @@ export default function Home() {
               <p className="text-xs text-muted-foreground mt-1">No hidden charges ever</p>
             </div>
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">50+</div>
-              <p className="text-muted-foreground">Tournaments</p>
-              <p className="text-xs text-muted-foreground mt-1">Covered annually</p>
+              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">11</div>
+              <p className="text-muted-foreground">Players Per Team</p>
+              <p className="text-xs text-muted-foreground mt-1">Build your dream XI</p>
             </div>
             <div className="text-center">
               <div className="text-4xl md:text-5xl font-bold text-primary mb-2">24/7</div>
