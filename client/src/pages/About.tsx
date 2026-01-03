@@ -1,6 +1,7 @@
 import Layout from "@/components/Layout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Trophy, Users, Shield, Target } from "lucide-react";
+import { RestrictedStatesNotice } from "@/components/RestrictedStatesNotice";
 
 export default function About() {
   return (
@@ -116,20 +117,29 @@ export default function About() {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="mb-8">
               <CardContent className="p-6">
                 <h2 className="text-2xl font-bold mb-4">Legal Compliance</h2>
                 <p className="text-muted-foreground mb-4">
                   Khelosmart operates in full compliance with Indian laws regarding online gaming. 
-                  Fantasy sports is recognized as a game of skill by the Supreme Court of India.
+                  Fantasy sports is recognized as a game of skill by the Supreme Court of India 
+                  (K.R. Lakshmanan vs. State of Tamil Nadu, 1996).
                 </p>
-                <p className="text-muted-foreground">
-                  We implement age verification (18+) and geo-restrictions to ensure responsible gaming. 
-                  Users from Telangana, Andhra Pradesh, Assam, and Odisha are restricted from participating 
-                  due to state-specific regulations.
-                </p>
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <div className="h-8 w-8 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center flex-shrink-0">
+                      <span className="text-sm font-bold text-red-600 dark:text-red-400">18+</span>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-foreground">Age Restriction</p>
+                      <p className="text-sm text-muted-foreground">Users must be 18 years of age or older to participate.</p>
+                    </div>
+                  </div>
+                </div>
               </CardContent>
             </Card>
+
+            <RestrictedStatesNotice variant="banner" className="mb-8" />
           </div>
         </div>
       </div>

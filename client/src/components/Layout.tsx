@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { useAuth } from "@/_core/hooks/useAuth";
+import { AgeRestrictionBanner } from "@/components/AgeRestrictionBanner";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
@@ -41,6 +42,9 @@ export default function Layout({ children }: LayoutProps) {
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
+      {/* 18+ Age Restriction Banner */}
+      <AgeRestrictionBanner />
+      
       {/* Header */}
       <header className="sticky top-0 z-50 w-full border-b border-gray-800 bg-black text-white">
         <div className="container flex h-16 items-center justify-between">

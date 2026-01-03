@@ -17,6 +17,7 @@ import {
   Radio,
   CheckCircle
 } from "lucide-react";
+import { RestrictedStatesNotice } from "@/components/RestrictedStatesNotice";
 
 export default function Home() {
   const { data: matchData, isLoading, error } = trpc.matches.getLiveScores.useQuery();
@@ -371,6 +372,48 @@ export default function Home() {
                 <ArrowRight className="h-4 w-4 ml-2" />
               </Link>
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* State Restrictions & Compliance Section */}
+      <section className="py-16 bg-background">
+        <div className="container">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl font-bold mb-2">Legal Compliance & Eligibility</h2>
+              <p className="text-muted-foreground">
+                Khelosmart operates in compliance with Indian laws. Please review the eligibility requirements below.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <RestrictedStatesNotice variant="card" />
+              <div className="bg-card border rounded-xl p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="h-10 w-10 rounded-lg bg-red-100 dark:bg-red-900/30 flex items-center justify-center">
+                    <span className="text-lg font-bold text-red-600 dark:text-red-400">18+</span>
+                  </div>
+                  <h3 className="text-lg font-semibold">Age Requirement</h3>
+                </div>
+                <p className="text-muted-foreground mb-4">
+                  You must be <strong>18 years of age or older</strong> to participate in fantasy sports contests on Khelosmart.
+                </p>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                    <span>Age verification may be required during registration</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                    <span>Fantasy sports is a game of skill recognized by the Supreme Court of India</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                    <span>This platform is 100% free to play - no real money involved</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </section>

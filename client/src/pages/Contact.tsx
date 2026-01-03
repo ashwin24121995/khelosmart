@@ -84,9 +84,11 @@ export default function Contact() {
                 <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-4">
                   <MapPin className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="font-semibold mb-2">Location</h3>
+                <h3 className="font-semibold mb-2">Address</h3>
                 <p className="text-sm text-muted-foreground">
-                  Tamil Nadu, India
+                  NO 12-F/4C, ANNANAGER RAMANAN STREET,<br />
+                  KALLAKURICHI, VILLUPURAM,<br />
+                  Tamil Nadu - 606202, India
                 </p>
               </CardContent>
             </Card>

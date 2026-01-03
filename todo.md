@@ -175,3 +175,29 @@
 - [x] Update About page with company information (CIN, Address)
 - [x] Update SSR components with matching company details
 - [x] Push changes to GitHub
+
+## Google Ads Compliance Fixes (from Comparison Report)
+
+### CRITICAL FIXES (Must Do)
+- [x] Add prominent 18+ age restriction banner at top of homepage
+- [x] Add restricted states list (Telangana, Andhra Pradesh, Assam, Odisha, Sikkim, Nagaland) on homepage
+- [x] Add restricted states list on About page
+- [x] Add restricted states list on Terms page
+- [x] Rewrite comprehensive Terms & Conditions (copy structure from dinedivinelive.com)
+  - [x] Add Jurisdiction clause
+  - [x] Add Arbitration clause
+  - [x] Add all standard legal clauses
+
+### HIGHLY RECOMMENDED FIXES
+- [x] Rewrite comprehensive Privacy Policy (use dinedivinelive.com as template)
+  - [x] Add detailed data handling sections
+  - [x] Add GDPR compliance section
+  - [x] Add cookies policy section
+- [x] Update Contact page with full physical address### SSR Updates
+- [x] Update SSR Home page with 18+ banner and restricted states
+- [x] Update SSR Terms page with comprehensive content
+- [x] Update SSR Privacy page with comprehensive content
+- [x] Update SSR footer with 6 restricted statesdress
+
+### Final Steps
+- [ ] Push all changes to GitHub

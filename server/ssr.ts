@@ -145,7 +145,7 @@ export function getPrerenderedContent(path: string): string {
             </ul>
             <div style="margin-top: 16px; padding: 12px; background: rgba(120, 53, 15, 0.3); border: 1px solid rgba(161, 98, 7, 0.5); border-radius: 8px;">
               <p style="font-size: 12px; color: #fcd34d;">
-                <strong>18+ Only.</strong> Fantasy sports not available in Telangana, Andhra Pradesh, Assam, and Odisha.
+                <strong>18+ Only.</strong> Fantasy sports not available in Telangana, Andhra Pradesh, Assam, Odisha, Sikkim, and Nagaland.
               </p>
             </div>
           </div>
@@ -229,6 +229,17 @@ function getPageContent(path: string): string {
 
 function getHomePageContent(): string {
   return `
+    <!-- 18+ Age Restriction Banner -->
+    <div style="background: linear-gradient(to right, #dc2626, #b91c1c); color: white; padding: 12px 16px;">
+      <div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="background: white; color: #dc2626; font-weight: bold; padding: 4px 10px; border-radius: 4px; font-size: 14px;">18+</span>
+          <span style="font-weight: 600;">This platform is strictly for users aged 18 years and above</span>
+        </div>
+        <span style="font-size: 14px; opacity: 0.9;">| Not available in: Telangana, Andhra Pradesh, Assam, Odisha, Sikkim, Nagaland</span>
+      </div>
+    </div>
+
     <section style="position: relative; overflow: hidden; color: white; min-height: 600px; background: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.4)), url('/images/hero-cricket-stadium.webp') center/cover no-repeat;">
       <div style="max-width: 1200px; margin: 0 auto; padding: 80px 16px;">
         <div style="max-width: 768px;">
@@ -303,6 +314,32 @@ function getHomePageContent(): string {
           <div style="padding: 24px; border-radius: 12px; background: white; border: 1px solid #e5e7eb;">
             <h3 style="font-weight: 600; margin-bottom: 8px; color: #111827;">Safe & Secure</h3>
             <p style="color: #6b7280; font-size: 14px;">Your data is protected with industry-standard security measures.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Restricted States Notice Section -->
+    <section style="padding: 48px 16px; background: #fef3c7; border-top: 4px solid #f59e0b;">
+      <div style="max-width: 1000px; margin: 0 auto;">
+        <div style="display: flex; align-items: flex-start; gap: 16px;">
+          <div style="background: #f59e0b; color: white; padding: 8px 12px; border-radius: 8px; font-weight: bold; font-size: 18px; flex-shrink: 0;">⚠️</div>
+          <div>
+            <h3 style="font-size: 20px; font-weight: bold; color: #92400e; margin-bottom: 12px;">Important: Geographic Restrictions</h3>
+            <p style="color: #78350f; margin-bottom: 16px;">
+              In compliance with state laws and regulations, Khelosmart fantasy sports services are <strong>NOT available</strong> to residents of the following states:
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
+              <span style="background: #dc2626; color: white; padding: 6px 12px; border-radius: 6px; font-size: 14px; font-weight: 500;">Telangana</span>
+              <span style="background: #dc2626; color: white; padding: 6px 12px; border-radius: 6px; font-size: 14px; font-weight: 500;">Andhra Pradesh</span>
+              <span style="background: #dc2626; color: white; padding: 6px 12px; border-radius: 6px; font-size: 14px; font-weight: 500;">Assam</span>
+              <span style="background: #dc2626; color: white; padding: 6px 12px; border-radius: 6px; font-size: 14px; font-weight: 500;">Odisha</span>
+              <span style="background: #dc2626; color: white; padding: 6px 12px; border-radius: 6px; font-size: 14px; font-weight: 500;">Sikkim</span>
+              <span style="background: #dc2626; color: white; padding: 6px 12px; border-radius: 6px; font-size: 14px; font-weight: 500;">Nagaland</span>
+            </div>
+            <p style="color: #78350f; font-size: 14px;">
+              Users from these states are prohibited from creating accounts or participating in any contests. By using this platform, you confirm that you are not a resident of any of the above states.
+            </p>
           </div>
         </div>
       </div>
@@ -434,14 +471,69 @@ function getFAQPageContent(): string {
 function getTermsPageContent(): string {
   return `
     <div style="max-width: 800px; margin: 0 auto; padding: 48px 16px;">
-      <h1 style="font-size: 36px; font-weight: bold; margin-bottom: 32px; color: #111827;">Terms & Conditions</h1>
-      <p style="color: #6b7280; margin-bottom: 24px;">Last updated: January 2026</p>
-      <h2 style="font-size: 24px; font-weight: bold; margin-top: 32px; margin-bottom: 16px; color: #111827;">1. Acceptance of Terms</h2>
-      <p style="color: #6b7280; margin-bottom: 24px;">By accessing and using Khelosmart, you agree to be bound by these Terms and Conditions.</p>
-      <h2 style="font-size: 24px; font-weight: bold; margin-top: 32px; margin-bottom: 16px; color: #111827;">2. Platform Description</h2>
-      <p style="color: #6b7280; margin-bottom: 24px;">Khelosmart is a FREE-TO-PLAY fantasy cricket platform for entertainment purposes only. No real money is involved.</p>
-      <h2 style="font-size: 24px; font-weight: bold; margin-top: 32px; margin-bottom: 16px; color: #111827;">3. Eligibility</h2>
-      <p style="color: #6b7280; margin-bottom: 24px;">You must be at least 18 years old to use this platform.</p>
+      <h1 style="font-size: 36px; font-weight: bold; margin-bottom: 16px; color: #111827; text-align: center;">Terms and Conditions</h1>
+      <p style="text-align: center; color: #6b7280; margin-bottom: 8px;">Please read these terms carefully before using Khelosmart</p>
+      <p style="text-align: center; color: #9ca3af; margin-bottom: 32px; font-size: 14px;">Last Updated: January 2026</p>
+      
+      <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+        <p style="color: #166534; font-weight: 500;">
+          Khelosmart is a FREE-TO-PLAY fantasy sports platform designed purely for entertainment purposes. 
+          There is NO real money involvement, NO cash prizes, and NO gambling or betting of any kind.
+        </p>
+      </div>
+      
+      <h2 style="font-size: 24px; font-weight: bold; margin-top: 32px; margin-bottom: 16px; color: #111827;">1. Introduction</h2>
+      <p style="color: #6b7280; margin-bottom: 24px;">Welcome to Khelosmart. These Terms and Conditions govern your use of the Khelosmart website and services operated by THIRUMOOLAR SAPTHAYOGA GRADING (OPC) PRIVATE LIMITED, a company registered in India with CIN U80301TN2019OPC130468.</p>
+      
+      <h2 style="font-size: 24px; font-weight: bold; margin-top: 32px; margin-bottom: 16px; color: #111827;">2. Eligibility</h2>
+      <p style="color: #6b7280; margin-bottom: 16px;">To use Khelosmart, you must:</p>
+      <ul style="color: #6b7280; margin-bottom: 24px; padding-left: 24px;">
+        <li style="margin-bottom: 8px;">Be at least <strong>18 years of age</strong></li>
+        <li style="margin-bottom: 8px;">Be a resident of India</li>
+        <li style="margin-bottom: 8px;"><strong>NOT</strong> be a resident of Telangana, Andhra Pradesh, Assam, Odisha, Sikkim, or Nagaland</li>
+        <li style="margin-bottom: 8px;">Have the legal capacity to enter into a binding agreement</li>
+      </ul>
+      
+      <div style="background: #fef3c7; border: 1px solid #fcd34d; border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+        <h3 style="font-weight: 600; color: #92400e; margin-bottom: 12px;">Geographic Restrictions</h3>
+        <p style="color: #78350f; margin-bottom: 12px;">Khelosmart services are NOT available in:</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+          <span style="background: #dc2626; color: white; padding: 4px 12px; border-radius: 4px; font-size: 14px;">Telangana</span>
+          <span style="background: #dc2626; color: white; padding: 4px 12px; border-radius: 4px; font-size: 14px;">Andhra Pradesh</span>
+          <span style="background: #dc2626; color: white; padding: 4px 12px; border-radius: 4px; font-size: 14px;">Assam</span>
+          <span style="background: #dc2626; color: white; padding: 4px 12px; border-radius: 4px; font-size: 14px;">Odisha</span>
+          <span style="background: #dc2626; color: white; padding: 4px 12px; border-radius: 4px; font-size: 14px;">Sikkim</span>
+          <span style="background: #dc2626; color: white; padding: 4px 12px; border-radius: 4px; font-size: 14px;">Nagaland</span>
+        </div>
+      </div>
+      
+      <h2 style="font-size: 24px; font-weight: bold; margin-top: 32px; margin-bottom: 16px; color: #111827;">3. Platform Services</h2>
+      <p style="color: #6b7280; margin-bottom: 16px;">Khelosmart provides a free-to-play fantasy sports platform where users can:</p>
+      <ul style="color: #6b7280; margin-bottom: 24px; padding-left: 24px;">
+        <li style="margin-bottom: 8px;">Create virtual fantasy cricket teams</li>
+        <li style="margin-bottom: 8px;">Participate in free contests</li>
+        <li style="margin-bottom: 8px;">Track live scores and player performances</li>
+        <li style="margin-bottom: 8px;">Compete on leaderboards with other users</li>
+      </ul>
+      <p style="color: #6b7280; margin-bottom: 24px;"><strong>Important:</strong> All services are provided free of charge. There are no entry fees, no real money prizes, and no monetary rewards.</p>
+      
+      <h2 style="font-size: 24px; font-weight: bold; margin-top: 32px; margin-bottom: 16px; color: #111827;">4. Fantasy Sports - Game of Skill</h2>
+      <p style="color: #6b7280; margin-bottom: 24px;">Fantasy sports, as offered on Khelosmart, is recognized as a game of skill under Indian law. The Supreme Court of India, in K.R. Lakshmanan vs. State of Tamil Nadu (1996), established that games where success depends predominantly on the superior knowledge, training, attention, experience, and adroitness of the player are games of skill.</p>
+      
+      <h2 style="font-size: 24px; font-weight: bold; margin-top: 32px; margin-bottom: 16px; color: #111827;">5. Governing Law and Jurisdiction</h2>
+      <p style="color: #6b7280; margin-bottom: 24px;">These Terms shall be governed by and construed in accordance with the laws of India. Any disputes arising from these Terms shall be subject to the exclusive jurisdiction of the courts in Villupuram, Tamil Nadu, India.</p>
+      
+      <h2 style="font-size: 24px; font-weight: bold; margin-top: 32px; margin-bottom: 16px; color: #111827;">6. Dispute Resolution</h2>
+      <p style="color: #6b7280; margin-bottom: 24px;">Any dispute or claim arising out of or relating to these Terms shall first be attempted to be resolved through good-faith negotiations. If the dispute cannot be resolved through negotiations within 30 days, either party may pursue legal remedies as provided under applicable law, including arbitration under the Arbitration and Conciliation Act, 1996.</p>
+      
+      <h2 style="font-size: 24px; font-weight: bold; margin-top: 32px; margin-bottom: 16px; color: #111827;">7. Contact Information</h2>
+      <div style="background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px; padding: 24px;">
+        <p style="font-weight: 600; color: #111827; margin-bottom: 12px;">THIRUMOOLAR SAPTHAYOGA GRADING (OPC) PRIVATE LIMITED</p>
+        <p style="color: #6b7280;">NO 12-F/4C, ANNANAGER RAMANAN STREET,<br>KALLAKURICHI, VILLUPURAM,<br>Tamil Nadu - 606202, India</p>
+        <p style="color: #6b7280; margin-top: 12px;"><strong>CIN:</strong> U80301TN2019OPC130468</p>
+        <p style="color: #6b7280;"><strong>Email:</strong> support@khelosmart.com</p>
+        <p style="color: #6b7280;"><strong>Website:</strong> www.khelosmart.com</p>
+      </div>
     </div>
   `;
 }
@@ -449,14 +541,72 @@ function getTermsPageContent(): string {
 function getPrivacyPageContent(): string {
   return `
     <div style="max-width: 800px; margin: 0 auto; padding: 48px 16px;">
-      <h1 style="font-size: 36px; font-weight: bold; margin-bottom: 32px; color: #111827;">Privacy Policy</h1>
-      <p style="color: #6b7280; margin-bottom: 24px;">Last updated: January 2026</p>
-      <h2 style="font-size: 24px; font-weight: bold; margin-top: 32px; margin-bottom: 16px; color: #111827;">1. Information We Collect</h2>
-      <p style="color: #6b7280; margin-bottom: 24px;">We collect information you provide directly, including name, email, and date of birth for age verification.</p>
-      <h2 style="font-size: 24px; font-weight: bold; margin-top: 32px; margin-bottom: 16px; color: #111827;">2. How We Use Your Information</h2>
-      <p style="color: #6b7280; margin-bottom: 24px;">We use your information to provide and improve our services, verify eligibility, and communicate with you.</p>
-      <h2 style="font-size: 24px; font-weight: bold; margin-top: 32px; margin-bottom: 16px; color: #111827;">3. Data Security</h2>
-      <p style="color: #6b7280; margin-bottom: 24px;">We implement industry-standard security measures to protect your personal information.</p>
+      <h1 style="font-size: 36px; font-weight: bold; margin-bottom: 16px; color: #111827; text-align: center;">Privacy Policy</h1>
+      <p style="text-align: center; color: #6b7280; margin-bottom: 8px;">Your privacy is important to us. Learn how we collect, use, and protect your information.</p>
+      <p style="text-align: center; color: #9ca3af; margin-bottom: 32px; font-size: 14px;">Last Updated: January 2026</p>
+      
+      <h2 style="font-size: 24px; font-weight: bold; margin-top: 32px; margin-bottom: 16px; color: #111827;">1. Introduction</h2>
+      <p style="color: #6b7280; margin-bottom: 24px;">THIRUMOOLAR SAPTHAYOGA GRADING (OPC) PRIVATE LIMITED operates the Khelosmart platform. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our Platform.</p>
+      
+      <h2 style="font-size: 24px; font-weight: bold; margin-top: 32px; margin-bottom: 16px; color: #111827;">2. Information We Collect</h2>
+      <h3 style="font-size: 18px; font-weight: 600; margin-top: 20px; margin-bottom: 12px; color: #374151;">2.1 Personal Information</h3>
+      <ul style="color: #6b7280; margin-bottom: 16px; padding-left: 24px;">
+        <li style="margin-bottom: 8px;">Full name</li>
+        <li style="margin-bottom: 8px;">Email address</li>
+        <li style="margin-bottom: 8px;">Mobile phone number</li>
+        <li style="margin-bottom: 8px;">Date of birth</li>
+        <li style="margin-bottom: 8px;">State of residence</li>
+      </ul>
+      <h3 style="font-size: 18px; font-weight: 600; margin-top: 20px; margin-bottom: 12px; color: #374151;">2.2 Usage Information</h3>
+      <ul style="color: #6b7280; margin-bottom: 24px; padding-left: 24px;">
+        <li style="margin-bottom: 8px;">Device information (type, operating system, browser)</li>
+        <li style="margin-bottom: 8px;">IP address and location data</li>
+        <li style="margin-bottom: 8px;">Pages visited and features used</li>
+        <li style="margin-bottom: 8px;">Contest participation and team selections</li>
+      </ul>
+      
+      <h2 style="font-size: 24px; font-weight: bold; margin-top: 32px; margin-bottom: 16px; color: #111827;">3. How We Use Your Information</h2>
+      <ul style="color: #6b7280; margin-bottom: 24px; padding-left: 24px;">
+        <li style="margin-bottom: 8px;">To create and manage your account</li>
+        <li style="margin-bottom: 8px;">To verify your identity and eligibility (age and location)</li>
+        <li style="margin-bottom: 8px;">To provide and maintain our Platform services</li>
+        <li style="margin-bottom: 8px;">To detect and prevent fraud or abuse</li>
+        <li style="margin-bottom: 8px;">To comply with legal obligations</li>
+      </ul>
+      
+      <h2 style="font-size: 24px; font-weight: bold; margin-top: 32px; margin-bottom: 16px; color: #111827;">4. Data Security</h2>
+      <p style="color: #6b7280; margin-bottom: 24px;">We implement appropriate technical and organizational measures to protect your personal information, including encryption of data in transit and at rest, secure server infrastructure, and regular security assessments.</p>
+      
+      <h2 style="font-size: 24px; font-weight: bold; margin-top: 32px; margin-bottom: 16px; color: #111827;">5. Your Rights</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px;">
+        <div style="background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px;">
+          <h4 style="font-weight: 600; color: #111827; margin-bottom: 8px;">Right to Access</h4>
+          <p style="color: #6b7280; font-size: 14px;">Request a copy of your personal information</p>
+        </div>
+        <div style="background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px;">
+          <h4 style="font-weight: 600; color: #111827; margin-bottom: 8px;">Right to Correction</h4>
+          <p style="color: #6b7280; font-size: 14px;">Request correction of inaccurate information</p>
+        </div>
+        <div style="background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px;">
+          <h4 style="font-weight: 600; color: #111827; margin-bottom: 8px;">Right to Deletion</h4>
+          <p style="color: #6b7280; font-size: 14px;">Request deletion of your personal information</p>
+        </div>
+        <div style="background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px;">
+          <h4 style="font-weight: 600; color: #111827; margin-bottom: 8px;">Right to Withdraw</h4>
+          <p style="color: #6b7280; font-size: 14px;">Withdraw your consent at any time</p>
+        </div>
+      </div>
+      
+      <h2 style="font-size: 24px; font-weight: bold; margin-top: 32px; margin-bottom: 16px; color: #111827;">6. Children's Privacy</h2>
+      <p style="color: #6b7280; margin-bottom: 24px;">Our Platform is not intended for users under 18 years of age. We do not knowingly collect personal information from children.</p>
+      
+      <h2 style="font-size: 24px; font-weight: bold; margin-top: 32px; margin-bottom: 16px; color: #111827;">7. Contact Us</h2>
+      <div style="background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px; padding: 24px;">
+        <p style="font-weight: 600; color: #111827; margin-bottom: 12px;">THIRUMOOLAR SAPTHAYOGA GRADING (OPC) PRIVATE LIMITED</p>
+        <p style="color: #6b7280;">NO 12-F/4C, ANNANAGER RAMANAN STREET,<br>KALLAKURICHI, VILLUPURAM,<br>Tamil Nadu - 606202, India</p>
+        <p style="color: #6b7280; margin-top: 12px;"><strong>CIN:</strong> U80301TN2019OPC130468</p>
+        <p style="color: #6b7280;"><strong>Email:</strong> privacy@khelosmart.com</p>
+      </div>
     </div>
   `;
 }
