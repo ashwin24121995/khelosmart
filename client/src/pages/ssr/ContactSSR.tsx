@@ -33,8 +33,14 @@ export default function ContactSSR() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900">Address</h3>
-                  <p className="text-gray-600">THIRUMOOLAR SAPTHAYOGA GRADING<br />India</p>
+                  <h3 className="font-semibold text-gray-900">Registered Address</h3>
+                  <p className="text-gray-600">
+                    THIRUMOOLAR SAPTHAYOGA GRADING (OPC) PRIVATE LIMITED<br />
+                    NO 12-F/4C, ANNANAGER RAMANAN STREET,<br />
+                    KALLAKURICHI, VILLUPURAM,<br />
+                    Tamil Nadu - 606202, India<br />
+                    CIN: U80301TN2019OPC130468
+                  </p>
                 </div>
               </div>
             </div>

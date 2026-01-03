@@ -16,7 +16,7 @@ export default function Privacy() {
 
               <h2 className="text-xl font-bold mt-6 mb-4">1. Introduction</h2>
               <p className="text-muted-foreground mb-4">
-                THIRUMOOLAR SAPTHAYOGA GRADING ("we", "us", "our") operates Khelosmart. This Privacy 
+                THIRUMOOLAR SAPTHAYOGA GRADING (OPC) PRIVATE LIMITED ("we", "us", "our") operates Khelosmart. This Privacy 
                 Policy explains how we collect, use, disclose, and safeguard your information when 
                 you use our platform.
               </p>

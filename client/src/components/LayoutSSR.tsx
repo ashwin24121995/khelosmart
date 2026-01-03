@@ -84,6 +84,28 @@ export default function LayoutSSR({ children }: LayoutSSRProps) {
                 <li><Link href="/terms" className="hover:text-white">Terms & Conditions</Link></li>
                 <li><Link href="/privacy" className="hover:text-white">Privacy Policy</Link></li>
               </ul>
+              <div className="mt-4 p-3 bg-yellow-900/30 border border-yellow-700 rounded-lg">
+                <p className="text-xs text-yellow-400">
+                  <strong>18+ Only.</strong> Fantasy sports not available in Telangana, Andhra Pradesh, Assam, and Odisha.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Company Details */}
+          <div className="mt-8 pt-8 border-t border-gray-800">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-400">
+              <div>
+                <h4 className="font-semibold text-white mb-2">Registered Company</h4>
+                <p className="font-medium">THIRUMOOLAR SAPTHAYOGA GRADING (OPC) PRIVATE LIMITED</p>
+                <p className="mt-1">CIN: U80301TN2019OPC130468</p>
+              </div>
+              <div>
+                <h4 className="font-semibold text-white mb-2">Registered Address</h4>
+                <p>NO 12-F/4C, ANNANAGER RAMANAN STREET,</p>
+                <p>KALLAKURICHI, VILLUPURAM,</p>
+                <p>Tamil Nadu - 606202, India</p>
+              </div>
             </div>
           </div>
 
@@ -96,7 +118,7 @@ export default function LayoutSSR({ children }: LayoutSSRProps) {
               </p>
             </div>
             <p className="text-sm text-gray-500 text-center">
-              © 2025 THIRUMOOLAR SAPTHAYOGA GRADING. All rights reserved.
+              © 2025 THIRUMOOLAR SAPTHAYOGA GRADING (OPC) PRIVATE LIMITED. All rights reserved.
             </p>
           </div>
         </div>

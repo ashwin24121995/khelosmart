@@ -29,7 +29,7 @@ export default function TermsSSR() {
           <p>Users must play fairly and not engage in any form of cheating, collusion, or manipulation of the platform. Violation may result in account suspension.</p>
 
           <h2 className="text-2xl font-bold mt-8 mb-4 text-gray-900">6. Intellectual Property</h2>
-          <p>All content on Khelosmart, including logos, designs, and text, is the property of THIRUMOOLAR SAPTHAYOGA GRADING and protected by intellectual property laws.</p>
+          <p>All content on Khelosmart, including logos, designs, and text, is the property of THIRUMOOLAR SAPTHAYOGA GRADING (OPC) PRIVATE LIMITED and protected by intellectual property laws.</p>
 
           <h2 className="text-2xl font-bold mt-8 mb-4 text-gray-900">7. Disclaimer</h2>
           <p>Khelosmart is provided "as is" without warranties of any kind. We do not guarantee uninterrupted access to the platform or accuracy of all information.</p>

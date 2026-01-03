@@ -143,6 +143,26 @@ export function getPrerenderedContent(path: string): string {
               <li><a href="/terms" class="hover:text-white">Terms & Conditions</a></li>
               <li><a href="/privacy" class="hover:text-white">Privacy Policy</a></li>
             </ul>
+            <div style="margin-top: 16px; padding: 12px; background: rgba(120, 53, 15, 0.3); border: 1px solid rgba(161, 98, 7, 0.5); border-radius: 8px;">
+              <p style="font-size: 12px; color: #fcd34d;">
+                <strong>18+ Only.</strong> Fantasy sports not available in Telangana, Andhra Pradesh, Assam, and Odisha.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="mt-8 pt-8 border-t border-gray-800">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-400">
+            <div>
+              <h4 class="font-semibold text-white mb-2">Registered Company</h4>
+              <p class="font-medium">THIRUMOOLAR SAPTHAYOGA GRADING (OPC) PRIVATE LIMITED</p>
+              <p style="margin-top: 4px;">CIN: U80301TN2019OPC130468</p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-white mb-2">Registered Address</h4>
+              <p>NO 12-F/4C, ANNANAGER RAMANAN STREET,</p>
+              <p>KALLAKURICHI, VILLUPURAM,</p>
+              <p>Tamil Nadu - 606202, India</p>
+            </div>
           </div>
         </div>
         <div class="mt-8 pt-8 border-t border-gray-800">
@@ -153,7 +173,7 @@ export function getPrerenderedContent(path: string): string {
             </p>
           </div>
           <p class="text-sm text-gray-500 text-center">
-            © 2025 THIRUMOOLAR SAPTHAYOGA GRADING. All rights reserved.
+            © 2025 THIRUMOOLAR SAPTHAYOGA GRADING (OPC) PRIVATE LIMITED. All rights reserved.
           </p>
         </div>
       </div>
@@ -325,8 +345,14 @@ function getAboutPageContent(): string {
       </ul>
       <h2 style="font-size: 24px; font-weight: bold; margin-top: 32px; margin-bottom: 16px; color: #111827;">Our Company</h2>
       <p style="color: #6b7280; margin-bottom: 24px;">
-        Khelosmart is operated by THIRUMOOLAR SAPTHAYOGA GRADING, committed to providing a fair, transparent, and entertaining fantasy sports experience for all cricket lovers.
+        Khelosmart is operated by THIRUMOOLAR SAPTHAYOGA GRADING (OPC) PRIVATE LIMITED, committed to providing a fair, transparent, and entertaining fantasy sports experience for all cricket lovers.
       </p>
+      <div style="background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px; padding: 24px; margin-bottom: 24px;">
+        <h3 style="font-weight: 600; color: #111827; margin-bottom: 12px;">Company Information</h3>
+        <p style="color: #6b7280;"><strong>Company Name:</strong> THIRUMOOLAR SAPTHAYOGA GRADING (OPC) PRIVATE LIMITED</p>
+        <p style="color: #6b7280;"><strong>CIN:</strong> U80301TN2019OPC130468</p>
+        <p style="color: #6b7280;"><strong>Registered Address:</strong> NO 12-F/4C, ANNANAGER RAMANAN STREET, KALLAKURICHI, VILLUPURAM, Tamil Nadu - 606202, India</p>
+      </div>
       <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 24px; margin-top: 32px;">
         <h3 style="font-weight: 600; color: #166534; margin-bottom: 8px;">Important Notice</h3>
         <p style="color: #15803d;">
@@ -447,8 +473,14 @@ function getContactPageContent(): string {
         <p style="color: #6b7280;">support@khelosmart.com</p>
       </div>
       <div style="background: white; border: 1px solid #e5e7eb; border-radius: 8px; padding: 24px;">
-        <h3 style="font-weight: 600; margin-bottom: 8px; color: #111827;">Company</h3>
-        <p style="color: #6b7280;">THIRUMOOLAR SAPTHAYOGA GRADING<br>India</p>
+        <h3 style="font-weight: 600; margin-bottom: 8px; color: #111827;">Registered Company</h3>
+        <p style="color: #6b7280;">
+          THIRUMOOLAR SAPTHAYOGA GRADING (OPC) PRIVATE LIMITED<br>
+          CIN: U80301TN2019OPC130468<br><br>
+          NO 12-F/4C, ANNANAGER RAMANAN STREET,<br>
+          KALLAKURICHI, VILLUPURAM,<br>
+          Tamil Nadu - 606202, India
+        </p>
       </div>
     </div>
   `;

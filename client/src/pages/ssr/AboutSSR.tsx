@@ -27,8 +27,17 @@ export default function AboutSSR() {
 
           <h2 className="text-2xl font-bold mt-8 mb-4 text-gray-900">Our Company</h2>
           <p className="text-gray-600 mb-6">
-            Khelosmart is operated by THIRUMOOLAR SAPTHAYOGA GRADING, committed to providing a fair, transparent, and entertaining fantasy sports experience for all cricket lovers.
+            Khelosmart is operated by THIRUMOOLAR SAPTHAYOGA GRADING (OPC) PRIVATE LIMITED, committed to providing a fair, transparent, and entertaining fantasy sports experience for all cricket lovers.
           </p>
+          
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
+            <h3 className="text-lg font-semibold text-gray-800 mb-3">Company Information</h3>
+            <div className="space-y-2 text-gray-600">
+              <p><strong>Company Name:</strong> THIRUMOOLAR SAPTHAYOGA GRADING (OPC) PRIVATE LIMITED</p>
+              <p><strong>CIN:</strong> U80301TN2019OPC130468</p>
+              <p><strong>Registered Address:</strong> NO 12-F/4C, ANNANAGER RAMANAN STREET, KALLAKURICHI, VILLUPURAM, Tamil Nadu - 606202, India</p>
+            </div>
+          </div>
 
           <div className="bg-green-50 border border-green-200 rounded-lg p-6 mt-8">
             <h3 className="text-lg font-semibold text-green-800 mb-2">Important Notice</h3>

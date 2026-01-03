@@ -206,8 +206,25 @@ export default function Layout({ children }: LayoutProps) {
             </div>
           </div>
 
+          {/* Company Details */}
+          <div className="mt-8 pt-8 border-t border-gray-800">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-400">
+              <div>
+                <h4 className="font-semibold text-white mb-2">Registered Company</h4>
+                <p className="font-medium">THIRUMOOLAR SAPTHAYOGA GRADING (OPC) PRIVATE LIMITED</p>
+                <p className="mt-1">CIN: U80301TN2019OPC130468</p>
+              </div>
+              <div>
+                <h4 className="font-semibold text-white mb-2">Registered Address</h4>
+                <p>NO 12-F/4C, ANNANAGER RAMANAN STREET,</p>
+                <p>KALLAKURICHI, VILLUPURAM,</p>
+                <p>Tamil Nadu - 606202, India</p>
+              </div>
+            </div>
+          </div>
+
           <div className="mt-8 pt-8 border-t border-gray-800 text-center text-sm text-gray-400">
-            <p>© {new Date().getFullYear()} Khelosmart. Operated by THIRUMOOLAR SAPTHAYOGA GRADING. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} Khelosmart. Operated by THIRUMOOLAR SAPTHAYOGA GRADING (OPC) PRIVATE LIMITED. All rights reserved.</p>
           </div>
         </div>
       </footer>

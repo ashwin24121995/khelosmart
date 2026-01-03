@@ -61,7 +61,7 @@ export default function Terms() {
               <h2 className="text-xl font-bold mt-6 mb-4">6. Intellectual Property</h2>
               <p className="text-muted-foreground mb-4">
                 All content on the Platform, including logos, designs, text, and graphics, is the 
-                property of THIRUMOOLAR SAPTHAYOGA GRADING and is protected by intellectual property laws.
+                property of THIRUMOOLAR SAPTHAYOGA GRADING (OPC) PRIVATE LIMITED and is protected by intellectual property laws.
               </p>
 
               <h2 className="text-xl font-bold mt-6 mb-4">7. Disclaimer</h2>
@@ -73,7 +73,7 @@ export default function Terms() {
 
               <h2 className="text-xl font-bold mt-6 mb-4">8. Limitation of Liability</h2>
               <p className="text-muted-foreground mb-4">
-                To the maximum extent permitted by law, THIRUMOOLAR SAPTHAYOGA GRADING shall not be 
+                To the maximum extent permitted by law, THIRUMOOLAR SAPTHAYOGA GRADING (OPC) PRIVATE LIMITED shall not be 
                 liable for any indirect, incidental, special, or consequential damages arising from 
                 your use of the Platform.
               </p>

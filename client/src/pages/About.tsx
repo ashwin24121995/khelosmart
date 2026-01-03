@@ -11,7 +11,7 @@ export default function About() {
           
           <div className="prose prose-lg max-w-none">
             <p className="text-xl text-muted-foreground mb-8">
-              Khelosmart is a free-to-play fantasy cricket platform operated by THIRUMOOLAR SAPTHAYOGA GRADING. 
+              Khelosmart is a free-to-play fantasy cricket platform operated by THIRUMOOLAR SAPTHAYOGA GRADING (OPC) PRIVATE LIMITED. 
               We provide cricket enthusiasts with an exciting way to engage with the sport they love.
             </p>
 
@@ -89,10 +89,29 @@ export default function About() {
             <Card className="mb-8">
               <CardContent className="p-6">
                 <h2 className="text-2xl font-bold mb-4">Company Information</h2>
-                <div className="space-y-2 text-muted-foreground">
-                  <p><strong>Company Name:</strong> THIRUMOOLAR SAPTHAYOGA GRADING</p>
-                  <p><strong>Platform:</strong> Khelosmart Fantasy Cricket</p>
-                  <p><strong>Website:</strong> www.khelosmart.com</p>
+                <div className="space-y-3 text-muted-foreground">
+                  <div>
+                    <p className="font-semibold text-foreground">Company Name</p>
+                    <p>THIRUMOOLAR SAPTHAYOGA GRADING (OPC) PRIVATE LIMITED</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-foreground">CIN (Corporate Identification Number)</p>
+                    <p>U80301TN2019OPC130468</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-foreground">Registered Address</p>
+                    <p>NO 12-F/4C, ANNANAGER RAMANAN STREET,</p>
+                    <p>KALLAKURICHI, VILLUPURAM,</p>
+                    <p>Tamil Nadu - 606202, India</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-foreground">Platform</p>
+                    <p>Khelosmart Fantasy Cricket</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-foreground">Website</p>
+                    <p>www.khelosmart.com</p>
+                  </div>
                 </div>
               </CardContent>
             </Card>
