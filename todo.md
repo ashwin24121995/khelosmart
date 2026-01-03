@@ -174,4 +174,4 @@
 - [x] Add full company details to Footer
 - [x] Update About page with company information (CIN, Address)
 - [x] Update SSR components with matching company details
-- [ ] Push changes to GitHub
+- [x] Push changes to GitHub
