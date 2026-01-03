@@ -166,8 +166,23 @@ export function getPrerenderedContent(path: string): string {
           </div>
         </div>
         <div class="mt-8 pt-8 border-t border-gray-800">
-          <div class="bg-yellow-900 bg-opacity-30 border border-yellow-600 border-opacity-30 rounded-lg p-4 mb-6">
-            <p class="text-sm text-yellow-200">
+          <div style="background: linear-gradient(to right, rgba(120, 53, 15, 0.4), rgba(146, 64, 14, 0.4)); border: 1px solid rgba(217, 119, 6, 0.5); border-radius: 8px; padding: 16px; margin-bottom: 24px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <div style="flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%; background: rgba(245, 158, 11, 0.2); border: 2px solid #f59e0b; display: flex; align-items: center; justify-content: center;">
+                <span style="font-size: 14px; font-weight: bold; color: #fbbf24;">18+</span>
+              </div>
+              <div>
+                <p style="font-size: 14px; color: #fde68a;">
+                  <strong>Age Restriction:</strong> This platform is strictly for users aged 18 years and above.
+                </p>
+                <p style="font-size: 12px; color: rgba(253, 230, 138, 0.8); margin-top: 4px;">
+                  Fantasy sports not available in: <strong>Telangana, Andhra Pradesh, Assam, Odisha, Sikkim, and Nagaland</strong>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div style="background: rgba(22, 101, 52, 0.3); border: 1px solid rgba(34, 197, 94, 0.5); border-radius: 8px; padding: 16px; margin-bottom: 24px;">
+            <p style="font-size: 14px; color: #bbf7d0;">
               <strong>Important:</strong> Khelosmart is a FREE-TO-PLAY fantasy sports platform for entertainment purposes only. 
               No real money is involved. This is not gambling. Play responsibly and have fun!
             </p>
@@ -229,17 +244,6 @@ function getPageContent(path: string): string {
 
 function getHomePageContent(): string {
   return `
-    <!-- 18+ Age Restriction Banner -->
-    <div style="background: linear-gradient(to right, #dc2626, #b91c1c); color: white; padding: 12px 16px;">
-      <div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap;">
-        <div style="display: flex; align-items: center; gap: 8px;">
-          <span style="background: white; color: #dc2626; font-weight: bold; padding: 4px 10px; border-radius: 4px; font-size: 14px;">18+</span>
-          <span style="font-weight: 600;">This platform is strictly for users aged 18 years and above</span>
-        </div>
-        <span style="font-size: 14px; opacity: 0.9;">| Not available in: Telangana, Andhra Pradesh, Assam, Odisha, Sikkim, Nagaland</span>
-      </div>
-    </div>
-
     <section style="position: relative; overflow: hidden; color: white; min-height: 600px; background: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.4)), url('/images/hero-cricket-stadium.webp') center/cover no-repeat;">
       <div style="max-width: 1200px; margin: 0 auto; padding: 80px 16px;">
         <div style="max-width: 768px;">
@@ -342,6 +346,131 @@ function getHomePageContent(): string {
             </p>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Live Cricket Updates Section -->
+    <section style="padding: 64px 16px; background: #f9fafb;">
+      <div style="max-width: 1200px; margin: 0 auto;">
+        <h2 style="font-size: 36px; font-weight: bold; text-align: center; margin-bottom: 16px; color: #111827;">Live Cricket Updates</h2>
+        <p style="text-align: center; color: #6b7280; max-width: 640px; margin: 0 auto 48px;">Stay updated with real-time cricket scores, match statistics, and player performances from around the world.</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+          <div style="padding: 24px; border-radius: 12px; background: white; border: 1px solid #e5e7eb; text-align: center;">
+            <div style="width: 64px; height: 64px; border-radius: 50%; background: #dbeafe; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 24px;">📻</div>
+            <h3 style="font-weight: 600; margin-bottom: 8px; color: #111827;">Ball-by-Ball Updates</h3>
+            <p style="color: #6b7280; font-size: 14px;">Get instant ball-by-ball commentary and live score updates for all major cricket matches including IPL, T20 World Cup, and international series.</p>
+          </div>
+          <div style="padding: 24px; border-radius: 12px; background: white; border: 1px solid #e5e7eb; text-align: center;">
+            <div style="width: 64px; height: 64px; border-radius: 50%; background: #dcfce7; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 24px;">⚡</div>
+            <h3 style="font-weight: 600; margin-bottom: 8px; color: #111827;">Instant Point Calculation</h3>
+            <p style="color: #6b7280; font-size: 14px;">Watch your fantasy points update in real-time as players score runs, take wickets, and make crucial contributions during live matches.</p>
+          </div>
+          <div style="padding: 24px; border-radius: 12px; background: white; border: 1px solid #e5e7eb; text-align: center;">
+            <div style="width: 64px; height: 64px; border-radius: 50%; background: #f3e8ff; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 24px;">🏆</div>
+            <h3 style="font-weight: 600; margin-bottom: 8px; color: #111827;">Live Leaderboards</h3>
+            <p style="color: #6b7280; font-size: 14px;">Track your position on the leaderboard as the match progresses. See how your team compares against other fantasy players.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fantasy Points System Section -->
+    <section style="padding: 64px 16px; background: white;">
+      <div style="max-width: 1200px; margin: 0 auto;">
+        <h2 style="font-size: 36px; font-weight: bold; text-align: center; margin-bottom: 16px; color: #111827;">Fantasy Points System</h2>
+        <p style="text-align: center; color: #6b7280; max-width: 640px; margin: 0 auto 48px;">Our transparent and fair points system rewards smart team selection. Every run, wicket, catch, and stumping counts towards your fantasy score.</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+          <div style="padding: 24px; border-radius: 12px; background: #f9fafb; border: 1px solid #e5e7eb;">
+            <h3 style="font-weight: 600; margin-bottom: 12px; color: #111827;">Batting Points</h3>
+            <ul style="color: #6b7280; font-size: 14px; list-style: none; padding: 0; margin: 0;">
+              <li style="margin-bottom: 4px;">• Run scored: +1 point</li>
+              <li style="margin-bottom: 4px;">• Boundary (4s): +1 bonus</li>
+              <li style="margin-bottom: 4px;">• Six (6s): +2 bonus</li>
+              <li style="margin-bottom: 4px;">• Half-century: +8 bonus</li>
+              <li style="margin-bottom: 4px;">• Century: +16 bonus</li>
+            </ul>
+          </div>
+          <div style="padding: 24px; border-radius: 12px; background: #f9fafb; border: 1px solid #e5e7eb;">
+            <h3 style="font-weight: 600; margin-bottom: 12px; color: #111827;">Bowling Points</h3>
+            <ul style="color: #6b7280; font-size: 14px; list-style: none; padding: 0; margin: 0;">
+              <li style="margin-bottom: 4px;">• Wicket: +25 points</li>
+              <li style="margin-bottom: 4px;">• 3-wicket haul: +4 bonus</li>
+              <li style="margin-bottom: 4px;">• 4-wicket haul: +8 bonus</li>
+              <li style="margin-bottom: 4px;">• 5-wicket haul: +16 bonus</li>
+              <li style="margin-bottom: 4px;">• Maiden over: +12 points</li>
+            </ul>
+          </div>
+          <div style="padding: 24px; border-radius: 12px; background: #f9fafb; border: 1px solid #e5e7eb;">
+            <h3 style="font-weight: 600; margin-bottom: 12px; color: #111827;">Fielding Points</h3>
+            <ul style="color: #6b7280; font-size: 14px; list-style: none; padding: 0; margin: 0;">
+              <li style="margin-bottom: 4px;">• Catch: +8 points</li>
+              <li style="margin-bottom: 4px;">• Stumping: +12 points</li>
+              <li style="margin-bottom: 4px;">• Run out (direct): +12 points</li>
+              <li style="margin-bottom: 4px;">• Run out (indirect): +6 points</li>
+            </ul>
+          </div>
+        </div>
+        <div style="margin-top: 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+          <div style="padding: 24px; border-radius: 12px; background: #fef9c3; border: 1px solid #fde047;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+              <div style="width: 48px; height: 48px; border-radius: 50%; background: #eab308; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 18px;">C</div>
+              <div>
+                <h4 style="font-weight: 600; color: #854d0e;">Captain</h4>
+                <p style="font-size: 14px; color: #a16207;">Earns 2x points for all actions</p>
+              </div>
+            </div>
+          </div>
+          <div style="padding: 24px; border-radius: 12px; background: #dbeafe; border: 1px solid #93c5fd;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+              <div style="width: 48px; height: 48px; border-radius: 50%; background: #3b82f6; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 18px;">VC</div>
+              <div>
+                <h4 style="font-weight: 600; color: #1e40af;">Vice-Captain</h4>
+                <p style="font-size: 14px; color: #1d4ed8;">Earns 1.5x points for all actions</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Supported Tournaments Section -->
+    <section style="padding: 64px 16px; background: #f9fafb;">
+      <div style="max-width: 1200px; margin: 0 auto;">
+        <h2 style="font-size: 36px; font-weight: bold; text-align: center; margin-bottom: 16px; color: #111827;">Supported Cricket Tournaments</h2>
+        <p style="text-align: center; color: #6b7280; max-width: 640px; margin: 0 auto 48px;">Create fantasy teams for all major cricket tournaments and leagues from around the world.</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px;">
+          <div style="padding: 16px; border-radius: 12px; background: white; border: 1px solid #e5e7eb; text-align: center;">
+            <div style="font-size: 24px; margin-bottom: 8px;">🏆</div>
+            <h4 style="font-weight: 600; font-size: 14px; color: #111827;">IPL</h4>
+            <p style="font-size: 12px; color: #6b7280;">Indian Premier League</p>
+          </div>
+          <div style="padding: 16px; border-radius: 12px; background: white; border: 1px solid #e5e7eb; text-align: center;">
+            <div style="font-size: 24px; margin-bottom: 8px;">🌍</div>
+            <h4 style="font-weight: 600; font-size: 14px; color: #111827;">T20 World Cup</h4>
+            <p style="font-size: 12px; color: #6b7280;">ICC T20 World Cup</p>
+          </div>
+          <div style="padding: 16px; border-radius: 12px; background: white; border: 1px solid #e5e7eb; text-align: center;">
+            <div style="font-size: 24px; margin-bottom: 8px;">🏅</div>
+            <h4 style="font-weight: 600; font-size: 14px; color: #111827;">ODI World Cup</h4>
+            <p style="font-size: 12px; color: #6b7280;">ICC Cricket World Cup</p>
+          </div>
+          <div style="padding: 16px; border-radius: 12px; background: white; border: 1px solid #e5e7eb; text-align: center;">
+            <div style="font-size: 24px; margin-bottom: 8px;">🇦🇺</div>
+            <h4 style="font-weight: 600; font-size: 14px; color: #111827;">BBL</h4>
+            <p style="font-size: 12px; color: #6b7280;">Big Bash League</p>
+          </div>
+          <div style="padding: 16px; border-radius: 12px; background: white; border: 1px solid #e5e7eb; text-align: center;">
+            <div style="font-size: 24px; margin-bottom: 8px;">🇬🇧</div>
+            <h4 style="font-weight: 600; font-size: 14px; color: #111827;">The Hundred</h4>
+            <p style="font-size: 12px; color: #6b7280;">England's Premier League</p>
+          </div>
+          <div style="padding: 16px; border-radius: 12px; background: white; border: 1px solid #e5e7eb; text-align: center;">
+            <div style="font-size: 24px; margin-bottom: 8px;">🇵🇰</div>
+            <h4 style="font-weight: 600; font-size: 14px; color: #111827;">PSL</h4>
+            <p style="font-size: 12px; color: #6b7280;">Pakistan Super League</p>
+          </div>
+        </div>
+        <p style="text-align: center; font-size: 14px; color: #6b7280; margin-top: 32px;">Plus international Test matches, ODIs, T20Is, and many more domestic leagues!</p>
       </div>
     </section>
 

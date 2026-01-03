@@ -42,9 +42,6 @@ export default function Layout({ children }: LayoutProps) {
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
-      {/* 18+ Age Restriction Banner */}
-      <AgeRestrictionBanner />
-      
       {/* Header */}
       <header className="sticky top-0 z-50 w-full border-b border-gray-800 bg-black text-white">
         <div className="container flex h-16 items-center justify-between">
@@ -202,11 +199,6 @@ export default function Layout({ children }: LayoutProps) {
                 <li><Link href="/about" className="text-gray-400 hover:text-primary">About Us</Link></li>
                 <li><Link href="/contact" className="text-gray-400 hover:text-primary">Contact Us</Link></li>
               </ul>
-              <div className="mt-4 p-3 bg-yellow-900/30 border border-yellow-700 rounded-lg">
-                <p className="text-xs text-yellow-400">
-                  <strong>18+ Only.</strong> Fantasy sports not available in Telangana, Andhra Pradesh, Assam, and Odisha.
-                </p>
-              </div>
             </div>
           </div>
 
@@ -227,7 +219,32 @@ export default function Layout({ children }: LayoutProps) {
             </div>
           </div>
 
-          <div className="mt-8 pt-8 border-t border-gray-800 text-center text-sm text-gray-400">
+          {/* 18+ Age Restriction Notice - Footer Position */}
+          <div className="mt-8 pt-8 border-t border-gray-800">
+            <div className="bg-gradient-to-r from-amber-900/40 to-amber-800/40 border border-amber-700/50 rounded-lg p-4 mb-6">
+              <div className="flex items-center gap-3">
+                <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-amber-500/20 border-2 border-amber-500">
+                  <span className="text-sm font-bold text-amber-400">18+</span>
+                </div>
+                <div>
+                  <p className="text-sm text-amber-200">
+                    <strong>Age Restriction:</strong> This platform is strictly for users aged 18 years and above.
+                  </p>
+                  <p className="text-xs text-amber-300/80 mt-1">
+                    Fantasy sports not available in: <strong>Telangana, Andhra Pradesh, Assam, Odisha, Sikkim, and Nagaland</strong>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="bg-green-900/30 border border-green-700/50 rounded-lg p-4 mb-6">
+              <p className="text-sm text-green-200">
+                <strong>Important:</strong> Khelosmart is a FREE-TO-PLAY fantasy sports platform for entertainment purposes only. 
+                No real money is involved. This is not gambling. Play responsibly and have fun!
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-4 text-center text-sm text-gray-400">
             <p>© {new Date().getFullYear()} Khelosmart. Operated by THIRUMOOLAR SAPTHAYOGA GRADING (OPC) PRIVATE LIMITED. All rights reserved.</p>
           </div>
         </div>

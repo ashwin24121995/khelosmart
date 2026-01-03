@@ -201,3 +201,10 @@
 
 ### Final Steps
 - [x] Push all changes to GitHub
+
+## Critical Google Ads Fixes (Round 2)
+- [x] Remove <noscript> "JavaScript Required" block from index.html (already not present)
+- [x] Move 18+ banner from top of page to footer (like dinedivinelive.com)
+- [x] Add more content to homepage (live matches, upcoming matches sections)
+- [x] Update SSR components with all changes
+- [ ] Push changes to GitHub

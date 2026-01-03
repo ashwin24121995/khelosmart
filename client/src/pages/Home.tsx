@@ -418,6 +418,185 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Live Cricket Updates Section */}
+      <section className="py-16 bg-muted/30">
+        <div className="container">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Live Cricket Updates</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Stay updated with real-time cricket scores, match statistics, and player performances from around the world.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-card border rounded-xl p-6 text-center">
+              <div className="h-16 w-16 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mx-auto mb-4">
+                <Radio className="h-8 w-8 text-blue-600 dark:text-blue-400" />
+              </div>
+              <h3 className="font-semibold text-lg mb-2">Ball-by-Ball Updates</h3>
+              <p className="text-muted-foreground text-sm">
+                Get instant ball-by-ball commentary and live score updates for all major cricket matches including IPL, T20 World Cup, and international series.
+              </p>
+            </div>
+            
+            <div className="bg-card border rounded-xl p-6 text-center">
+              <div className="h-16 w-16 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mx-auto mb-4">
+                <Zap className="h-8 w-8 text-green-600 dark:text-green-400" />
+              </div>
+              <h3 className="font-semibold text-lg mb-2">Instant Point Calculation</h3>
+              <p className="text-muted-foreground text-sm">
+                Watch your fantasy points update in real-time as players score runs, take wickets, and make crucial contributions during live matches.
+              </p>
+            </div>
+            
+            <div className="bg-card border rounded-xl p-6 text-center">
+              <div className="h-16 w-16 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center mx-auto mb-4">
+                <Trophy className="h-8 w-8 text-purple-600 dark:text-purple-400" />
+              </div>
+              <h3 className="font-semibold text-lg mb-2">Live Leaderboards</h3>
+              <p className="text-muted-foreground text-sm">
+                Track your position on the leaderboard as the match progresses. See how your team compares against other fantasy players.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Fantasy Points System Section */}
+      <section className="py-16 bg-background">
+        <div className="container">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl font-bold mb-6">Fantasy Points System</h2>
+              <p className="text-muted-foreground mb-6">
+                Our transparent and fair points system rewards smart team selection. Every run, wicket, catch, and stumping counts towards your fantasy score.
+              </p>
+              
+              <div className="space-y-4">
+                <div className="bg-card border rounded-lg p-4">
+                  <h4 className="font-semibold mb-2">Batting Points</h4>
+                  <div className="grid grid-cols-2 gap-2 text-sm text-muted-foreground">
+                    <span>• Run scored: +1 point</span>
+                    <span>• Boundary (4s): +1 bonus</span>
+                    <span>• Six (6s): +2 bonus</span>
+                    <span>• Half-century: +8 bonus</span>
+                    <span>• Century: +16 bonus</span>
+                    <span>• Strike rate bonus: varies</span>
+                  </div>
+                </div>
+                
+                <div className="bg-card border rounded-lg p-4">
+                  <h4 className="font-semibold mb-2">Bowling Points</h4>
+                  <div className="grid grid-cols-2 gap-2 text-sm text-muted-foreground">
+                    <span>• Wicket: +25 points</span>
+                    <span>• 3-wicket haul: +4 bonus</span>
+                    <span>• 4-wicket haul: +8 bonus</span>
+                    <span>• 5-wicket haul: +16 bonus</span>
+                    <span>• Maiden over: +12 points</span>
+                    <span>• Economy bonus: varies</span>
+                  </div>
+                </div>
+                
+                <div className="bg-card border rounded-lg p-4">
+                  <h4 className="font-semibold mb-2">Fielding Points</h4>
+                  <div className="grid grid-cols-2 gap-2 text-sm text-muted-foreground">
+                    <span>• Catch: +8 points</span>
+                    <span>• Stumping: +12 points</span>
+                    <span>• Run out (direct): +12 points</span>
+                    <span>• Run out (indirect): +6 points</span>
+                  </div>
+                </div>
+              </div>
+              
+              <Button className="mt-6" asChild>
+                <Link href="/how-to-play">
+                  View Complete Points System
+                  <ArrowRight className="h-4 w-4 ml-2" />
+                </Link>
+              </Button>
+            </div>
+            
+            <div className="bg-card border rounded-2xl p-8">
+              <h3 className="text-xl font-bold mb-6 text-center">Captain & Vice-Captain Multipliers</h3>
+              <div className="space-y-6">
+                <div className="flex items-center gap-4 p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-xl border border-yellow-200 dark:border-yellow-800">
+                  <div className="h-14 w-14 rounded-full bg-yellow-500 flex items-center justify-center flex-shrink-0">
+                    <span className="text-xl font-bold text-white">C</span>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold">Captain</h4>
+                    <p className="text-sm text-muted-foreground">Earns <strong className="text-yellow-600 dark:text-yellow-400">2x points</strong> for all actions</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-center gap-4 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl border border-blue-200 dark:border-blue-800">
+                  <div className="h-14 w-14 rounded-full bg-blue-500 flex items-center justify-center flex-shrink-0">
+                    <span className="text-xl font-bold text-white">VC</span>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold">Vice-Captain</h4>
+                    <p className="text-sm text-muted-foreground">Earns <strong className="text-blue-600 dark:text-blue-400">1.5x points</strong> for all actions</p>
+                  </div>
+                </div>
+                
+                <div className="text-center text-sm text-muted-foreground mt-4 p-4 bg-muted rounded-lg">
+                  <p><strong>Pro Tip:</strong> Choose your Captain wisely! A good Captain selection can make or break your fantasy team's performance.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Supported Tournaments Section */}
+      <section className="py-16 bg-muted/30">
+        <div className="container">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Supported Cricket Tournaments</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Create fantasy teams for all major cricket tournaments and leagues from around the world.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            <div className="bg-card border rounded-xl p-4 text-center">
+              <div className="text-2xl mb-2">🏆</div>
+              <h4 className="font-semibold text-sm">IPL</h4>
+              <p className="text-xs text-muted-foreground">Indian Premier League</p>
+            </div>
+            <div className="bg-card border rounded-xl p-4 text-center">
+              <div className="text-2xl mb-2">🌍</div>
+              <h4 className="font-semibold text-sm">T20 World Cup</h4>
+              <p className="text-xs text-muted-foreground">ICC T20 World Cup</p>
+            </div>
+            <div className="bg-card border rounded-xl p-4 text-center">
+              <div className="text-2xl mb-2">🏅</div>
+              <h4 className="font-semibold text-sm">ODI World Cup</h4>
+              <p className="text-xs text-muted-foreground">ICC Cricket World Cup</p>
+            </div>
+            <div className="bg-card border rounded-xl p-4 text-center">
+              <div className="text-2xl mb-2">🇦🇺</div>
+              <h4 className="font-semibold text-sm">BBL</h4>
+              <p className="text-xs text-muted-foreground">Big Bash League</p>
+            </div>
+            <div className="bg-card border rounded-xl p-4 text-center">
+              <div className="text-2xl mb-2">🇬🇧</div>
+              <h4 className="font-semibold text-sm">The Hundred</h4>
+              <p className="text-xs text-muted-foreground">England's Premier League</p>
+            </div>
+            <div className="bg-card border rounded-xl p-4 text-center">
+              <div className="text-2xl mb-2">🇵🇰</div>
+              <h4 className="font-semibold text-sm">PSL</h4>
+              <p className="text-xs text-muted-foreground">Pakistan Super League</p>
+            </div>
+          </div>
+          
+          <p className="text-center text-sm text-muted-foreground mt-8">
+            Plus international Test matches, ODIs, T20Is, and many more domestic leagues!
+          </p>
+        </div>
+      </section>
+
       {/* CTA Section with Trophy */}
       <section className="py-16 relative overflow-hidden">
         {/* Background gradient */}
