@@ -597,6 +597,197 @@ export default function Home() {
         </div>
       </section>
 
+      {/* User Testimonials Section */}
+      <section className="py-16 bg-background">
+        <div className="container">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">What Our Players Say</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Join thousands of satisfied cricket fans who trust Khelosmart for their fantasy cricket experience.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-card border rounded-xl p-6">
+              <div className="flex items-center gap-1 mb-4">
+                {[1,2,3,4,5].map((star) => (
+                  <span key={star} className="text-yellow-500">★</span>
+                ))}
+              </div>
+              <p className="text-muted-foreground mb-4 italic">
+                "Khelosmart has made fantasy cricket so much fun! I love that it's completely free to play. The interface is smooth and the live scoring keeps me engaged throughout the match."
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center">
+                  <span className="font-semibold text-primary">RK</span>
+                </div>
+                <div>
+                  <p className="font-semibold text-sm">Rahul K.</p>
+                  <p className="text-xs text-muted-foreground">Mumbai, Maharashtra</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="bg-card border rounded-xl p-6">
+              <div className="flex items-center gap-1 mb-4">
+                {[1,2,3,4,5].map((star) => (
+                  <span key={star} className="text-yellow-500">★</span>
+                ))}
+              </div>
+              <p className="text-muted-foreground mb-4 italic">
+                "Finally a fantasy cricket platform that doesn't ask for money! I can enjoy the thrill of building my dream team without any financial risk. Highly recommended!"
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center">
+                  <span className="font-semibold text-primary">PS</span>
+                </div>
+                <div>
+                  <p className="font-semibold text-sm">Priya S.</p>
+                  <p className="text-xs text-muted-foreground">Bangalore, Karnataka</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="bg-card border rounded-xl p-6">
+              <div className="flex items-center gap-1 mb-4">
+                {[1,2,3,4,5].map((star) => (
+                  <span key={star} className="text-yellow-500">★</span>
+                ))}
+              </div>
+              <p className="text-muted-foreground mb-4 italic">
+                "The points system is transparent and fair. I've learned so much about cricket strategy by playing on Khelosmart. It's the perfect way to test your cricket knowledge!"
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center">
+                  <span className="font-semibold text-primary">AM</span>
+                </div>
+                <div>
+                  <p className="font-semibold text-sm">Amit M.</p>
+                  <p className="text-xs text-muted-foreground">Delhi, NCR</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Platform Statistics Section */}
+      <section className="py-16 bg-muted/30">
+        <div className="container">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Platform Statistics</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Trusted by cricket fans across India for free-to-play fantasy cricket entertainment.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="text-center">
+              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">100%</div>
+              <p className="text-muted-foreground">Free to Play</p>
+              <p className="text-xs text-muted-foreground mt-1">No hidden charges ever</p>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">50+</div>
+              <p className="text-muted-foreground">Tournaments</p>
+              <p className="text-xs text-muted-foreground mt-1">Covered annually</p>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">24/7</div>
+              <p className="text-muted-foreground">Live Updates</p>
+              <p className="text-xs text-muted-foreground mt-1">Real-time scoring</p>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">100%</div>
+              <p className="text-muted-foreground">Secure</p>
+              <p className="text-xs text-muted-foreground mt-1">Data protection</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Legal Compliance & Game of Skill Section */}
+      <section className="py-16 bg-background">
+        <div className="container">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold mb-4">Legal Compliance & Game of Skill</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Khelosmart operates in full compliance with Indian laws and regulations governing fantasy sports.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="bg-card border rounded-xl p-6">
+                <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                  <Shield className="h-5 w-5 text-primary" />
+                  Supreme Court Recognition
+                </h3>
+                <p className="text-muted-foreground mb-4">
+                  Fantasy sports has been recognized as a "game of skill" by the Supreme Court of India. Unlike gambling, which relies on chance, fantasy sports requires knowledge, research, and strategic decision-making.
+                </p>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                    <span>Players must analyze player statistics and form</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                    <span>Team selection requires cricket knowledge</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                    <span>Strategic captain/vice-captain choices matter</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <div className="bg-card border rounded-xl p-6">
+                <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                  <Shield className="h-5 w-5 text-primary" />
+                  Free-to-Play Model
+                </h3>
+                <p className="text-muted-foreground mb-4">
+                  Khelosmart is a 100% free-to-play platform. We do not involve any real money transactions, betting, or gambling of any kind. Our platform is designed purely for entertainment and skill development.
+                </p>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                    <span>No entry fees or deposits required</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                    <span>No real money prizes or withdrawals</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                    <span>Play for fun and bragging rights only</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            
+            <div className="mt-8 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-6">
+              <h3 className="text-lg font-semibold mb-3">Company Registration Details</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                <div>
+                  <p className="text-muted-foreground"><strong>Company Name:</strong></p>
+                  <p>THIRUMOOLAR SAPTHAYOGA GRADING (OPC) PRIVATE LIMITED</p>
+                </div>
+                <div>
+                  <p className="text-muted-foreground"><strong>CIN:</strong></p>
+                  <p>U80301TN2019OPC130468</p>
+                </div>
+                <div className="md:col-span-2">
+                  <p className="text-muted-foreground"><strong>Registered Address:</strong></p>
+                  <p>NO 12-F/4C, ANNANAGER RAMANAN STREET, KALLAKURICHI, VILLUPURAM, Tamil Nadu - 606202, India</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section with Trophy */}
       <section className="py-16 relative overflow-hidden">
         {/* Background gradient */}

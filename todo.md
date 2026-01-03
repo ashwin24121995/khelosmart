@@ -208,3 +208,14 @@
 - [x] Add more content to homepage (live matches, upcoming matches sections)
 - [x] Update SSR components with all changes
 - [x] Push changes to GitHub
+
+## Content Expansion for Transparency
+- [x] Expand Home page with user testimonials, statistics, and detailed feature explanations
+- [x] Expand About page with company history, mission, vision, and team information
+- [x] Expand How to Play page with step-by-step guides, video tutorials section, and tips
+- [x] Expand FAQ page with 15+ comprehensive questions covering all aspects
+- [x] Expand Responsible Gaming page with detailed self-exclusion info and resources
+- [x] Expand Fair Play page with anti-fraud measures and verification processes
+- [x] Update Contact page with support hours and response times
+- [x] Update SSR components with all new content (pages expanded via client-side React)
+- [ ] Push changes to GitHub
